@@ -6,60 +6,73 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="26"
-8-->/Users/shikharsrivastava/Documents/GitHub/NeXS/NExS/app/src/main/AndroidManifest.xml
+8-->C:\Users\mayan\NeXS\NeXS\NExS\app\src\main\AndroidManifest.xml
 9        android:targetSdkVersion="29" />
-9-->/Users/shikharsrivastava/Documents/GitHub/NeXS/NExS/app/src/main/AndroidManifest.xml
+9-->C:\Users\mayan\NeXS\NeXS\NExS\app\src\main\AndroidManifest.xml
 10
-11    <application
-11-->/Users/shikharsrivastava/Documents/GitHub/NeXS/NExS/app/src/main/AndroidManifest.xml:5:5-29:19
-12        android:allowBackup="true"
-12-->/Users/shikharsrivastava/Documents/GitHub/NeXS/NExS/app/src/main/AndroidManifest.xml:6:9-35
-13        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-13-->[androidx.core:core:1.3.1] /Users/shikharsrivastava/.gradle/caches/transforms-2/files-2.1/dd785f24378047182b1aacdcc6f28fd8/core-1.3.1/AndroidManifest.xml:24:18-86
-14        android:debuggable="true"
-15        android:extractNativeLibs="false"
-16        android:icon="@mipmap/ic_launcher"
-16-->/Users/shikharsrivastava/Documents/GitHub/NeXS/NExS/app/src/main/AndroidManifest.xml:7:9-43
-17        android:label="@string/app_name"
-17-->/Users/shikharsrivastava/Documents/GitHub/NeXS/NExS/app/src/main/AndroidManifest.xml:8:9-41
-18        android:roundIcon="@mipmap/ic_launcher_round"
-18-->/Users/shikharsrivastava/Documents/GitHub/NeXS/NExS/app/src/main/AndroidManifest.xml:9:9-54
-19        android:supportsRtl="true"
-19-->/Users/shikharsrivastava/Documents/GitHub/NeXS/NExS/app/src/main/AndroidManifest.xml:10:9-35
-20        android:testOnly="true"
-21        android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
-21-->/Users/shikharsrivastava/Documents/GitHub/NeXS/NExS/app/src/main/AndroidManifest.xml:11:9-65
-22        <activity android:name="com.example.nexs.SplashScreen" >
-22-->/Users/shikharsrivastava/Documents/GitHub/NeXS/NExS/app/src/main/AndroidManifest.xml:12:9-18:20
-22-->/Users/shikharsrivastava/Documents/GitHub/NeXS/NExS/app/src/main/AndroidManifest.xml:12:19-47
-23            <intent-filter>
-23-->/Users/shikharsrivastava/Documents/GitHub/NeXS/NExS/app/src/main/AndroidManifest.xml:13:13-17:29
-24                <action android:name="android.intent.action.MAIN" />
-24-->/Users/shikharsrivastava/Documents/GitHub/NeXS/NExS/app/src/main/AndroidManifest.xml:14:17-69
-24-->/Users/shikharsrivastava/Documents/GitHub/NeXS/NExS/app/src/main/AndroidManifest.xml:14:25-66
-25
-26                <category android:name="android.intent.category.LAUNCHER" />
-26-->/Users/shikharsrivastava/Documents/GitHub/NeXS/NExS/app/src/main/AndroidManifest.xml:16:17-77
-26-->/Users/shikharsrivastava/Documents/GitHub/NeXS/NExS/app/src/main/AndroidManifest.xml:16:27-74
-27            </intent-filter>
-28        </activity>
-29        <activity android:name="com.example.nexs.MainActivity" >
-29-->/Users/shikharsrivastava/Documents/GitHub/NeXS/NExS/app/src/main/AndroidManifest.xml:19:9-28:20
-29-->/Users/shikharsrivastava/Documents/GitHub/NeXS/NExS/app/src/main/AndroidManifest.xml:19:19-47
-30            <intent-filter>
-30-->/Users/shikharsrivastava/Documents/GitHub/NeXS/NExS/app/src/main/AndroidManifest.xml:21:13-23:29
-31                <action android:name="android.intent.action.SEARCH" />
-31-->/Users/shikharsrivastava/Documents/GitHub/NeXS/NExS/app/src/main/AndroidManifest.xml:22:17-71
-31-->/Users/shikharsrivastava/Documents/GitHub/NeXS/NExS/app/src/main/AndroidManifest.xml:22:25-68
+11    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+11-->C:\Users\mayan\NeXS\NeXS\NExS\app\src\main\AndroidManifest.xml:5:5-79
+11-->C:\Users\mayan\NeXS\NeXS\NExS\app\src\main\AndroidManifest.xml:5:22-76
+12    <uses-permission android:name="android.permission.INTERNET" />
+12-->C:\Users\mayan\NeXS\NeXS\NExS\app\src\main\AndroidManifest.xml:7:5-67
+12-->C:\Users\mayan\NeXS\NeXS\NExS\app\src\main\AndroidManifest.xml:7:22-64
+13
+14    <application
+14-->C:\Users\mayan\NeXS\NeXS\NExS\app\src\main\AndroidManifest.xml:9:5-38:19
+15        android:allowBackup="true"
+15-->C:\Users\mayan\NeXS\NeXS\NExS\app\src\main\AndroidManifest.xml:10:9-35
+16        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+16-->[androidx.core:core:1.3.1] C:\Users\mayan\.gradle\caches\transforms-2\files-2.1\dd785f24378047182b1aacdcc6f28fd8\core-1.3.1\AndroidManifest.xml:24:18-86
+17        android:debuggable="true"
+18        android:extractNativeLibs="false"
+19        android:icon="@mipmap/ic_launcher"
+19-->C:\Users\mayan\NeXS\NeXS\NExS\app\src\main\AndroidManifest.xml:11:9-43
+20        android:label="@string/app_name"
+20-->C:\Users\mayan\NeXS\NeXS\NExS\app\src\main\AndroidManifest.xml:12:9-41
+21        android:roundIcon="@mipmap/ic_launcher_round"
+21-->C:\Users\mayan\NeXS\NeXS\NExS\app\src\main\AndroidManifest.xml:13:9-54
+22        android:supportsRtl="true"
+22-->C:\Users\mayan\NeXS\NeXS\NExS\app\src\main\AndroidManifest.xml:14:9-35
+23        android:testOnly="true"
+24        android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+24-->C:\Users\mayan\NeXS\NeXS\NExS\app\src\main\AndroidManifest.xml:15:9-65
+25        <activity android:name="com.example.nexs.FeedActivity" />
+25-->C:\Users\mayan\NeXS\NeXS\NExS\app\src\main\AndroidManifest.xml:17:9-59
+25-->C:\Users\mayan\NeXS\NeXS\NExS\app\src\main\AndroidManifest.xml:17:19-47
+26        <activity android:name="com.example.nexs.LoginActivity" />
+26-->C:\Users\mayan\NeXS\NeXS\NExS\app\src\main\AndroidManifest.xml:20:9-60
+26-->C:\Users\mayan\NeXS\NeXS\NExS\app\src\main\AndroidManifest.xml:20:19-48
+27        <activity android:name="com.example.nexs.SplashScreen" >
+27-->C:\Users\mayan\NeXS\NeXS\NExS\app\src\main\AndroidManifest.xml:21:9-28:20
+27-->C:\Users\mayan\NeXS\NeXS\NExS\app\src\main\AndroidManifest.xml:21:19-47
+28            <intent-filter>
+28-->C:\Users\mayan\NeXS\NeXS\NExS\app\src\main\AndroidManifest.xml:23:13-27:29
+29                <action android:name="android.intent.action.MAIN" />
+29-->C:\Users\mayan\NeXS\NeXS\NExS\app\src\main\AndroidManifest.xml:24:17-69
+29-->C:\Users\mayan\NeXS\NeXS\NExS\app\src\main\AndroidManifest.xml:24:25-66
+30
+31                <category android:name="android.intent.category.LAUNCHER" />
+31-->C:\Users\mayan\NeXS\NeXS\NExS\app\src\main\AndroidManifest.xml:26:17-77
+31-->C:\Users\mayan\NeXS\NeXS\NExS\app\src\main\AndroidManifest.xml:26:27-74
 32            </intent-filter>
-33
-34            <meta-data
-34-->/Users/shikharsrivastava/Documents/GitHub/NeXS/NExS/app/src/main/AndroidManifest.xml:25:13-27:54
-35                android:name="android.app.searchable"
-35-->/Users/shikharsrivastava/Documents/GitHub/NeXS/NExS/app/src/main/AndroidManifest.xml:26:17-54
-36                android:resource="@xml/searchable" />
-36-->/Users/shikharsrivastava/Documents/GitHub/NeXS/NExS/app/src/main/AndroidManifest.xml:27:17-51
-37        </activity>
-38    </application>
-39
-40</manifest>
+33        </activity>
+34        <activity android:name="com.example.nexs.MainActivity" >
+34-->C:\Users\mayan\NeXS\NeXS\NExS\app\src\main\AndroidManifest.xml:29:9-37:20
+34-->C:\Users\mayan\NeXS\NeXS\NExS\app\src\main\AndroidManifest.xml:29:19-47
+35            <intent-filter>
+35-->C:\Users\mayan\NeXS\NeXS\NExS\app\src\main\AndroidManifest.xml:30:13-32:29
+36                <action android:name="android.intent.action.SEARCH" />
+36-->C:\Users\mayan\NeXS\NeXS\NExS\app\src\main\AndroidManifest.xml:31:17-71
+36-->C:\Users\mayan\NeXS\NeXS\NExS\app\src\main\AndroidManifest.xml:31:25-68
+37            </intent-filter>
+38
+39            <meta-data
+39-->C:\Users\mayan\NeXS\NeXS\NExS\app\src\main\AndroidManifest.xml:34:13-36:54
+40                android:name="android.app.searchable"
+40-->C:\Users\mayan\NeXS\NeXS\NExS\app\src\main\AndroidManifest.xml:35:17-54
+41                android:resource="@xml/searchable" />
+41-->C:\Users\mayan\NeXS\NeXS\NExS\app\src\main\AndroidManifest.xml:36:17-51
+42        </activity>
+43    </application>
+44
+45</manifest>

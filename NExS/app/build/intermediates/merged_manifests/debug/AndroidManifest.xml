@@ -8,6 +8,9 @@
         android:minSdkVersion="26"
         android:targetSdkVersion="29" />
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -19,6 +22,8 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+        <activity android:name="com.example.nexs.FeedActivity" />
+        <activity android:name="com.example.nexs.LoginActivity" />
         <activity android:name="com.example.nexs.SplashScreen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

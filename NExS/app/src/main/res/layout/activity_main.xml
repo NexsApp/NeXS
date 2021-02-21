@@ -58,6 +58,101 @@
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="@+id/welcome_tv"
             app:layout_constraintTop_toBottomOf="@+id/welcome_tv" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/date_tv">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/feed_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:backgroundTint="#9C27B0"
+                    android:text="@string/view_your_bookmarked_news"
+                    android:textAllCaps="false"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sports_news_rv" />
+
+                <TextView
+                    android:id="@+id/sports_news_title_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/adobecleanbold"
+                    android:text="@string/sports_news_title"
+                    android:textColor="#9C27B0"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/sports_news_rv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="@+id/sports_news_title_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/sports_news_title_tv" />
+
+                <TextView
+                    android:id="@+id/education_news_title_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/adobecleanbold"
+                    android:text="@string/education_news_title"
+                    android:textColor="#9C27B0"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="@+id/sports_news_title_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/feed_button" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/education_news_rv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="@+id/sports_news_title_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/education_news_title_tv" />
+
+                <TextView
+                    android:id="@+id/international_news_title_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/adobecleanbold"
+                    android:text="@string/international_news_title"
+                    android:textColor="#9C27B0"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="@+id/sports_news_title_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/education_news_rv" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/international_news_rv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="@+id/sports_news_title_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/international_news_title_tv" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </ScrollView>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
