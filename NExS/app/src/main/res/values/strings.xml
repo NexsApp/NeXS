@@ -15,4 +15,10 @@
     <string name="welcome">Welcome</string>
     <string name="user_name_string">Mayank</string>
     <string name="date_string">Monday 9 November, 2020</string>
+    <string name="view_your_bookmarked_news">View Your Bookmarked News >  </string>
+
+    //News Category titles
+    <string name="sports_news_title">Sports</string>
+    <string name="education_news_title">Education</string>
+    <string name="international_news_title">International</string>
 </resources>
