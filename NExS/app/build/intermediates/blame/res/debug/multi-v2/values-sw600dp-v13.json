@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\mayan\\NeXS\\NeXS\\NExS\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+            "outputFile": "H:\\codes\\projects\\NExS Android\\NExS\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sw600dp-v13\\values-sw600dp-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\mayan\\.gradle\\caches\\transforms-2\\files-2.1\\0d69aea288bd9c77afa4f8afd7c35fe5\\appcompat-1.2.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "source": "C:\\Users\\mhite\\.gradle\\caches\\transforms-2\\files-2.1\\d1db22e5d18681aef1951602b62022a0\\appcompat-1.2.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\mayan\\.gradle\\caches\\transforms-2\\files-2.1\\522d5cc41e0add1313b98aa46881f2c9\\material-1.1.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "source": "C:\\Users\\mhite\\.gradle\\caches\\transforms-2\\files-2.1\\09c537f0f8c0ce0ec3e7ab4300eb9a71\\material-1.1.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,10,11,12,13,14",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",

@@ -1,14 +1,16 @@
 package com.example.nexs;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
-import android.os.Bundle;
-import android.view.View;
-
 import com.example.nexs.adapters.ViewPagerAdapter;
 import com.example.nexs.models.Slide;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,13 +19,12 @@ public class FeedActivity extends AppCompatActivity {
 
     private ViewPagerAdapter viewPagerAdapter;
     private ViewPager2 viewPager2;
-    private List<Slide> slideList  = new ArrayList<>();
+    private List<Slide> slideList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed);
-
         createSlides();
         //viewpager = findViewById(R.id.viewPagerSlider);
         viewPager2 = findViewById(R.id.viewPagerSlider);
@@ -34,7 +35,7 @@ public class FeedActivity extends AppCompatActivity {
         viewPager2.setAdapter(viewPagerAdapter);
     }
 
-    private void createSlides(){
+    private void createSlides() {
         Slide slide1 = new Slide();
         slide1.setAuthor("Seemant");
         slide1.setDate("24th Oct");

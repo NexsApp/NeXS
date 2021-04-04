@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/NExS.iml" filepath="$PROJECT_DIR$/NExS.iml" group="NExS" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="NExS/app" />
+      <module fileurl="file://$PROJECT_DIR$/NExS.iml" filepath="$PROJECT_DIR$/NExS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/NExS.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/NExS.app.iml" />
     </modules>
   </component>
 </project>

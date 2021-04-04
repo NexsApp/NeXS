@@ -1,0 +1,4 @@
+#Wed Mar 10 09:03:20 NPT 2021
+base.0=H\:\\codes\\projects\\NExS Android\\NExS\\app\\build\\intermediates\\dex\\release\\out\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

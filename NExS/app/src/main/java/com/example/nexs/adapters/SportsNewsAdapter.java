@@ -9,10 +9,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.nexs.NewCard;
+import com.example.nexs.models.NewCard;
 import com.example.nexs.R;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 

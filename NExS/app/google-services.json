@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "733221172616",
+    "project_id": "nexs-23feb21",
+    "storage_bucket": "nexs-23feb21.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:733221172616:android:640ba38bda5152b1e5b63d",
+        "android_client_info": {
+          "package_name": "com.example.nexs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "733221172616-ergl2rjutu2p2ds8gucf15e2envetchn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nexs",
+            "certificate_hash": "ef6522d8656da9537f6a8c1e75895c56df7eb9c1"
+          }
+        },
+        {
+          "client_id": "733221172616-m4p4dcijr34volbsgvtk22nu1uqruffr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nexs",
+            "certificate_hash": "3ec17b8b84e8d712719845bec1b42a9ace295f8c"
+          }
+        },
+        {
+          "client_id": "733221172616-c1k513ci074c5iqggsju9tq3f98qhst6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKI_ppV13zQjVpaRzuRWyF7u3wE1G09EI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "733221172616-c1k513ci074c5iqggsju9tq3f98qhst6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:scrollbars="vertical"
+    android:verticalScrollbarPosition="defaultPosition"
+    android:visibility="visible"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".PhoneAuth">
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="411dp"
+        android:layout_height="490dp"
+        android:background="#FFFFFF"
+        android:scaleType="centerCrop"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@id/send"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/nexscover" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="196dp"
+        android:layout_marginEnd="20dp"
+        android:text="NeXS"
+        android:textColor="@android:color/white"
+        android:textSize="80sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/phone"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="44dp"
+        android:background="@drawable/input_bg"
+        android:ems="10"
+        android:hint="Enter your phone number"
+        android:inputType="phone"
+        android:paddingLeft="20dp"
+        app:layout_constraintBottom_toTopOf="@id/send"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView2" />
+
+    <EditText
+        android:id="@+id/otp"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginEnd="45dp"
+        android:background="@drawable/input_bg"
+        android:ems="6"
+        android:hint="OTP"
+        android:inputType="number"
+        android:letterSpacing="0.1"
+        android:paddingLeft="20dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/send"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/phone" />
+
+    <Button
+        android:id="@+id/send"
+        android:layout_width="179dp"
+        android:layout_height="78dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/mybtn3"
+        android:fontFamily="sans-serif"
+        android:text="Send OTP"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/phone" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

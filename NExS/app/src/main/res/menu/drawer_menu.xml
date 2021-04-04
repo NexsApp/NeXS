@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/nav_profile"
         android:icon="@drawable/ic_account_profile"
         android:title="@string/profile" />
     <item
+        android:id="@+id/nav_bookmarks"
         android:icon="@drawable/ic_bookmark_black_24dp"
         android:title="@string/bookmarks" />
     <item
-        android:icon="@drawable/ic_close_black_24dp"
+        android:id="@+id/nav_login"
+        android:icon="@drawable/ic_baseline_exit_to_app_24"
         android:title="@string/logout" />
 </menu>
