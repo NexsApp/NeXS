@@ -2,6 +2,7 @@
     <string name="app_name">NExS</string>
 
     <string name="date">9 November 2020</string>
+    <string name="view_feed">View Feed</string>
 
     //drawer menu titles
     <string name="profile">Profile</string>

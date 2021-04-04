@@ -2600,8 +2600,9 @@ int string search_menu_title 0x7f10008b
 int string sports_news_title 0x7f10008c
 int string status_bar_notification_info_overflow 0x7f10008d
 int string user_name_string 0x7f10008e
-int string view_your_bookmarked_news 0x7f10008f
-int string welcome 0x7f100090
+int string view_feed 0x7f10008f
+int string view_your_bookmarked_news 0x7f100090
+int string welcome 0x7f100091
 int style AlertDialog_AppCompat 0x7f110000
 int style AlertDialog_AppCompat_Light 0x7f110001
 int style AndroidThemeColorAccentYellow 0x7f110002

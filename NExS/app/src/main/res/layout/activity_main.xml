@@ -23,50 +23,17 @@
             app:subtitleTextAppearance="@font/adobecleanbold"
             app:titleTextColor="@color/colorPrimary" />
 
-        <TextView
-            android:id="@+id/welcome_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/adobecleanregular"
-            android:text="@string/welcome"
-            android:textColor="#050505"
-            android:textSize="24sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/main_toolbar" />
-
-        <TextView
-            android:id="@+id/user_name_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:fontFamily="@font/adobecleanbold"
-            android:text="@string/user_name_string"
-            android:textColor="#090909"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="@+id/welcome_tv"
-            app:layout_constraintStart_toEndOf="@+id/welcome_tv"
-            app:layout_constraintTop_toTopOf="@+id/welcome_tv" />
-
-        <TextView
-            android:id="@+id/date_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/date_string"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="@+id/welcome_tv"
-            app:layout_constraintTop_toBottomOf="@+id/welcome_tv" />
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/date_tv">
+            android:layout_height="match_parent"
+            android:layout_marginTop="56dp"
+            android:fillViewport="true"
+            app:layout_constraintTop_toBottomOf="@+id/main_toolbar">
+
+
+
+
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -74,17 +41,55 @@
 
                 <Button
                     android:id="@+id/feed_button"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
                     android:layout_marginTop="8dp"
+                    android:background="@drawable/mybtn3"
                     android:backgroundTint="#9C27B0"
-                    android:text="@string/view_your_bookmarked_news"
+                    android:text="@string/view_feed"
                     android:textAllCaps="false"
                     android:textColor="#FFFFFF"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/sports_news_rv" />
+
+                <TextView
+                    android:id="@+id/welcome_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="@font/adobecleanregular"
+                    android:text="@string/welcome"
+                    android:textColor="#050505"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/user_name_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/adobecleanbold"
+                    android:text="@string/user_name_string"
+                    android:textColor="#090909"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/welcome_tv"
+                    app:layout_constraintStart_toEndOf="@+id/welcome_tv"
+                    app:layout_constraintTop_toTopOf="@+id/welcome_tv" />
+
+                <TextView
+                    android:id="@+id/date_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/date_string"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@+id/welcome_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/welcome_tv" />
+
 
                 <TextView
                     android:id="@+id/sports_news_title_tv"
@@ -97,13 +102,14 @@
                     android:textColor="#9C27B0"
                     android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@+id/date_tv" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/sports_news_rv"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+
                     app:layout_constraintStart_toStartOf="@+id/sports_news_title_tv"
                     app:layout_constraintTop_toBottomOf="@+id/sports_news_title_tv" />
 
@@ -146,6 +152,8 @@
                     android:layout_marginTop="8dp"
                     app:layout_constraintStart_toStartOf="@+id/sports_news_title_tv"
                     app:layout_constraintTop_toBottomOf="@+id/international_news_title_tv" />
+
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
