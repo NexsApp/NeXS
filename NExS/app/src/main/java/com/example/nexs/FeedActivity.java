@@ -133,6 +133,28 @@ public class FeedActivity extends AppCompatActivity {
                 public void onChanged(List<BookmarkedArticle> bookmarkedArticles) {
                     slideList.addAll(bookmarkedArticles);
                     viewModel.getBookmarks().removeObserver(this::onChanged);
+                    for (int i = 0; i < bookmarkedArticles.size(); ++i) {
+                        int curr = i;
+                        MainActivity.api.articleGetById(bookmarkedArticles.get(i).getId()).enqueue(new Callback<ArticleResponse>() {
+                            @Override
+                            public void onResponse(Call<ArticleResponse> call, Response<ArticleResponse> response) {
+                                if (response.code() == 200) {
+                                    if (response.body().getCode() == 200) {
+                                        Article a = response.body().getArticles().get(0);
+                                        if (!bookmarkedArticles.get(curr).getLikes().equals(a.getLikes())) {
+                                            bookmarkedArticles.get(curr).setLikes(a.getLikes());
+                                            viewPagerAdapter.notifyItemChanged(curr);
+                                        }
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<ArticleResponse> call, Throwable t) {
+
+                            }
+                        });
+                    }
                 }
             });
         }

@@ -1,6 +1,7 @@
 package com.example.nexs.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -28,6 +29,8 @@ import com.example.nexs.room.LikedArticle;
 import com.example.nexs.room.viewmodel.LocalDataViewModel;
 import com.github.ivbaranov.mfb.MaterialFavoriteButton;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.dynamiclinks.DynamicLink;
+import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
 
 import java.util.HashSet;
 import java.util.List;
@@ -134,7 +137,7 @@ public class ViewPagerAdapter extends RecyclerView.Adapter<ViewPagerAdapter.Page
         private TextView tapToView;
         private TextView likesCount;
         private TextView readMore;
-        private MaterialFavoriteButton likeButton, bookmarkButton;
+        private MaterialFavoriteButton likeButton, bookmarkButton, shareButton;
         boolean skipLike, skipBookmark;
 
         public PagerViewHolder(@NonNull View itemView) {
@@ -154,6 +157,7 @@ public class ViewPagerAdapter extends RecyclerView.Adapter<ViewPagerAdapter.Page
             readMore = itemView.findViewById(R.id.textView_link);
             likeButton = itemView.findViewById(R.id.like_button);
             bookmarkButton = itemView.findViewById(R.id.save_button);
+            shareButton = itemView.findViewById(R.id.share_button);
         }
 
         private void setListeners() {
@@ -169,6 +173,12 @@ public class ViewPagerAdapter extends RecyclerView.Adapter<ViewPagerAdapter.Page
                 @Override
                 public void onClick(View v) {
                     desc.setMaxLines(1000);
+                }
+            });
+            shareButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    shareArticle(slideList.get(getAdapterPosition()).getId());
                 }
             });
             setLikeListener();
@@ -201,6 +211,7 @@ public class ViewPagerAdapter extends RecyclerView.Adapter<ViewPagerAdapter.Page
                                 } else {
                                     if (Objects.requireNonNull(response.body()).getCode() == 200) {
                                         fav = true;
+                                        updateLike(getAdapterPosition(), true);
                                     } else {
                                         Log.i("news", response.body().getMessage());
                                         fav = false;
@@ -235,6 +246,7 @@ public class ViewPagerAdapter extends RecyclerView.Adapter<ViewPagerAdapter.Page
                                 } else {
                                     if (Objects.requireNonNull(response.body()).getCode() == 200) {
                                         fav = false;
+                                        updateLike(getAdapterPosition(), false);
                                     } else {
                                         Log.i("news", response.body().getMessage());
                                         fav = true;
@@ -256,6 +268,16 @@ public class ViewPagerAdapter extends RecyclerView.Adapter<ViewPagerAdapter.Page
                     }
                 }
             });
+        }
+
+        private void updateLike(int position, boolean increment) {
+            BookmarkedArticle a = slideList.get(position);
+            if (increment) {
+                a.setLikes(a.getLikes() + 1);
+            } else {
+                a.setLikes(a.getLikes() - 1);
+            }
+            notifyItemChanged(position);
         }
 
         private void setBookmarkListener() {
@@ -388,6 +410,20 @@ public class ViewPagerAdapter extends RecyclerView.Adapter<ViewPagerAdapter.Page
             }
         }
 
+    }
+
+    private void shareArticle(String id) {
+        String message = "Read this news from NExS\n\n";
+        DynamicLink dynamicLink = FirebaseDynamicLinks.getInstance().createDynamicLink()
+                .setLink(Uri.parse("https://nexs-news.com/article/?id=" + id))
+                .setDomainUriPrefix("https://nexs.page.link")
+                .setAndroidParameters(new DynamicLink.AndroidParameters.Builder("com.example.nexs").build())
+                .buildDynamicLink();
+        Uri dynamicLinkUri = dynamicLink.getUri();
+        Intent share = new Intent(Intent.ACTION_SEND);
+        share.setType("text/plain");
+        share.putExtra(Intent.EXTRA_TEXT, message + dynamicLinkUri.toString());
+        context.startActivity(share);
     }
 
 

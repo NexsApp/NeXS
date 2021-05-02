@@ -32,9 +32,13 @@ public class LocalDataViewModel extends AndroidViewModel {
     public LiveData<List<String>> getBookmarkedIds() {
         return bookmarkedIds;
     }
-    
+
     public void addBookmark(BookmarkedArticle article) {
         repository.addBookmark(article);
+    }
+
+    public void updateBookmark(BookmarkedArticle article) {
+        repository.updateBookmark(article);
     }
 
     public void removeBookmark(BookmarkedArticle article) {

@@ -6,6 +6,7 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import java.util.List;
 import java.util.Set;
@@ -23,6 +24,9 @@ public interface BookmarkDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void addBookmark(BookmarkedArticle article);
+
+    @Query("UPDATE bookmarkedarticle SET likes = :val WHERE id = :id")
+    void updateBookmark(Integer val, String id);
 
     @Delete
     void removeBookmark(BookmarkedArticle article);

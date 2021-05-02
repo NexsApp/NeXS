@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -38,6 +39,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GetTokenResult;
+import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
+import com.google.firebase.dynamiclinks.PendingDynamicLinkData;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -98,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
         context = this;
         setTokenListener();
         setRetrofit();
+        setDynamicLink();
 
         name = findViewById(R.id.user_name_tv);
         date = findViewById(R.id.date_tv);
@@ -197,6 +201,33 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void setDynamicLink() {
+        FirebaseDynamicLinks.getInstance()
+                .getDynamicLink(getIntent())
+                .addOnCompleteListener(new OnCompleteListener<PendingDynamicLinkData>() {
+                    @Override
+                    public void onComplete(@NonNull Task<PendingDynamicLinkData> task) {
+                        PendingDynamicLinkData linkData = task.getResult();
+                        Uri deepLink = null;
+                        if (linkData != null) {
+                            deepLink = linkData.getLink();
+                        }
+                        if (deepLink != null) {
+                            String path = deepLink.getLastPathSegment();
+                            if (path != null) {
+                                if (path.equals("article")) {
+                                    String id = deepLink.getQueryParameter("id");
+                                    Intent intent = new Intent(context, FeedActivity.class);
+                                    intent.putExtra("articleId", id);
+                                    intent.putExtra("showById", true);
+                                    context.startActivity(intent);
+                                }
+                            }
+                        }
+                    }
+                });
+    }
+
     private void setTokenListener() {
         if (FirebaseAuth.getInstance().getCurrentUser() == null)
             return;
@@ -225,7 +256,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         if (isNotLoggedIn()) {
-            navigationView.getMenu().getItem(2).setTitle("Log In").setIcon(ContextCompat.getDrawable(this, R.drawable.ic_baseline_login_24));
+            navigationView.getMenu().getItem(3).setTitle("Log In").setIcon(ContextCompat.getDrawable(this, R.drawable.ic_baseline_login_24));
         }
     }
 
@@ -254,7 +285,7 @@ public class MainActivity extends AppCompatActivity {
         return FirebaseAuth.getInstance().getCurrentUser() == null;
     }
 
-    private NavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener = new NavigationView.OnNavigationItemSelectedListener() {
+    private final NavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener = new NavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
@@ -283,6 +314,13 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
                     break;
+                case R.id.nav_share:
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                    Intent share = new Intent(Intent.ACTION_SEND);
+                    share.setType("text/plain");
+                    share.putExtra(Intent.EXTRA_TEXT, "Download NExS for latest news and updates\n\nhttps://nexs.page.link/invite");
+                    context.startActivity(share);
+                    break;
                 default:
                     loginOrLogout();
                     drawerLayout.closeDrawer(GravityCompat.START);
@@ -307,7 +345,7 @@ public class MainActivity extends AppCompatActivity {
             viewModel.deleteAllLikes();
             FirebaseAuth.getInstance().signOut();
             setUsername();
-            navigationView.getMenu().getItem(2).setTitle("Log In").setIcon(ContextCompat.getDrawable(context, R.drawable.ic_baseline_login_24));
+            navigationView.getMenu().getItem(3).setTitle("Log In").setIcon(ContextCompat.getDrawable(context, R.drawable.ic_baseline_login_24));
         }
     }
 }

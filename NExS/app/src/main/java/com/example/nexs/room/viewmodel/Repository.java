@@ -46,6 +46,16 @@ public class Repository {
         performBackgroundTask(runnable);
     }
 
+    public void updateBookmark(BookmarkedArticle article) {
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                bookmarkDao.updateBookmark(article.getLikes(), article.getId());
+            }
+        };
+        performBackgroundTask(runnable);
+    }
+
     public void removeBookmark(BookmarkedArticle article) {
         Runnable runnable = new Runnable() {
             @Override

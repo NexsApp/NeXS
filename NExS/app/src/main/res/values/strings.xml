@@ -24,4 +24,5 @@
     <string name="view_feed">Views Feed</string>
     <string name="tap_to_read_more_about_this_article">Tap to read more about this article.</string>
     <string name="read_more">Read more...</string>
+    <string name="share">Share</string>
 </resources>

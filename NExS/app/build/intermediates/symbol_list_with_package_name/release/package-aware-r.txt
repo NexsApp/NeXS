@@ -1741,6 +1741,7 @@ drawable ic_account_profile
 drawable ic_baseline_arrow_forward_24
 drawable ic_baseline_exit_to_app_24
 drawable ic_baseline_login_24
+drawable ic_baseline_share_24
 drawable ic_bookmark_black_24dp
 drawable ic_bookmark_border_black_24dp
 drawable ic_clock_black_24dp
@@ -1932,7 +1933,6 @@ id clip_horizontal
 id clip_vertical
 id clockwise
 id collapseActionView
-id comment_button
 id confirm_button
 id container
 id content
@@ -2111,6 +2111,7 @@ id nav_bookmarks
 id nav_controller_view_tag
 id nav_login
 id nav_profile
+id nav_share
 id navigation_drawer
 id navigation_header_container
 id never
@@ -2599,6 +2600,7 @@ string project_id
 string read_more
 string search
 string search_menu_title
+string share
 string sports_news_title
 string status_bar_notification_info_overflow
 string tap_to_read_more_about_this_article
