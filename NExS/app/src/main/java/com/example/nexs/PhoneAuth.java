@@ -2,6 +2,7 @@ package com.example.nexs;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -31,6 +32,9 @@ import java.util.concurrent.TimeUnit;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static com.example.nexs.LoginActivity.FIRST_NAME;
+import static com.example.nexs.LoginActivity.SHARED_PREF_BASIC_INFO;
 
 public class PhoneAuth extends AppCompatActivity {
 
@@ -70,9 +74,7 @@ public class PhoneAuth extends AppCompatActivity {
     OnCompleteListener<AuthResult> authResultOnCompleteListener = new OnCompleteListener<AuthResult>() {
         @Override
         public void onComplete(@NonNull Task<AuthResult> task) {
-            dialog.stopDialog();
             if (task.isSuccessful()) {
-                final Intent intent = new Intent(context, MainActivity.class);
                 final User user = new User();
                 user.setFirstname(firstName);
                 user.setMiddlename(middleName);
@@ -83,8 +85,12 @@ public class PhoneAuth extends AppCompatActivity {
                 MainActivity.api.userNewUser(user).enqueue(new Callback<UserResponse>() {
                     @Override
                     public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
+                        dialog.stopDialog();
                         if (response.body().getCode() == 200) {
-                            startActivity(intent);
+                            saveName(firstName);
+                            Intent intent = new Intent();
+                            intent.putExtra("success", true);
+                            PhoneAuth.this.setResult(RESULT_OK, intent);
                             PhoneAuth.this.finish();
                         } else {
                             Toast.makeText(context, "Something went wrong!", Toast.LENGTH_LONG).show();
@@ -97,6 +103,7 @@ public class PhoneAuth extends AppCompatActivity {
                     }
                 });
             } else {
+                dialog.stopDialog();
                 Toast.makeText(context, "Something went wrong!", Toast.LENGTH_LONG).show();
             }
         }
@@ -173,5 +180,12 @@ public class PhoneAuth extends AppCompatActivity {
     private void hideKeyboard() {
         InputMethodManager manager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
         manager.hideSoftInputFromWindow(otp.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+    }
+
+    private void saveName(String firstName) {
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF_BASIC_INFO, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(FIRST_NAME, firstName);
+        editor.apply();
     }
 }

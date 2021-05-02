@@ -30,6 +30,9 @@ public class User {
     @SerializedName("bookmarks")
     @Expose
     private List<String> bookmarks = new ArrayList<>();
+    @SerializedName("likes")
+    @Expose
+    private List<String> likes = new ArrayList<>();
     @SerializedName("coins")
     @Expose
     private Integer coins;
@@ -88,6 +91,14 @@ public class User {
 
     public void setBookmarks(List<String> bookmarks) {
         this.bookmarks = bookmarks;
+    }
+
+    public List<String> getLikes() {
+        return likes;
+    }
+
+    public void setLikes(List<String> likes) {
+        this.likes = likes;
     }
 
     public Integer getCoins() {

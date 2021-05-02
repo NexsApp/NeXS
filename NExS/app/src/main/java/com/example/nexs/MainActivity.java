@@ -1,6 +1,9 @@
 package com.example.nexs;
 
+import android.app.Application;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -8,6 +11,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -16,21 +20,30 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nexs.adapters.SportsNewsAdapter;
+import com.example.nexs.models.Article;
+import com.example.nexs.models.ArticleResponse;
 import com.example.nexs.models.NewCard;
 import com.example.nexs.api.NexsApi;
-import com.example.nexs.models.UserResponse;
+import com.example.nexs.room.AppDatabase;
+import com.example.nexs.room.viewmodel.LocalDataViewModel;
+import com.example.nexs.utility.LoadingDialog;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GetTokenResult;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 import retrofit2.Call;
@@ -40,6 +53,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
+    private Context context;
     public static Retrofit retrofit;
     public static NexsApi api;
     public static String token = "";
@@ -49,6 +63,9 @@ public class MainActivity extends AppCompatActivity {
     Toolbar mainToolBar;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
+
+    //Basic Info
+    private TextView name, date;
 
     //Remove this
     Button feedButton;
@@ -66,32 +83,26 @@ public class MainActivity extends AppCompatActivity {
     SportsNewsAdapter internationalNewsAdapter;
 
     //temporary data
-    ArrayList<NewCard> tempData;
-    ArrayList<NewCard> tempData2;
-    ArrayList<NewCard> tempData3;
+    ArrayList<NewCard> sportsHeadline = new ArrayList<>();
+    ArrayList<NewCard> educationHeadline = new ArrayList<>();
+    ArrayList<NewCard> intHeadline = new ArrayList<>();
+
+    //All articles
+    public static final List<Article> articles = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        context = this;
         setTokenListener();
         setRetrofit();
 
-        tempData = new ArrayList<>();
-        tempData.add(new NewCard("Glenn Maxwell bought by RCB", R.drawable.maxwell));
-        tempData.add(new NewCard("Glenn Maxwell bought by RCB", R.drawable.maxwell));
-        tempData.add(new NewCard("Glenn Maxwell bought by RCB", R.drawable.maxwell));
-
-        tempData2 = new ArrayList<>();
-        tempData2.add(new NewCard("New NEP policy", R.drawable.edu_min));
-        tempData2.add(new NewCard("New NEP policy", R.drawable.edu_min));
-        tempData2.add(new NewCard("New NEP policy", R.drawable.edu_min));
-
-        tempData3 = new ArrayList<>();
-        tempData3.add(new NewCard("Biden wins", R.drawable.biden));
-        tempData3.add(new NewCard("Biden wins", R.drawable.biden));
-        tempData3.add(new NewCard("Biden wins", R.drawable.biden));
+        name = findViewById(R.id.user_name_tv);
+        date = findViewById(R.id.date_tv);
+        setDate();
+        setUsername();
 
         mainToolBar = findViewById(R.id.main_toolbar);
         setSupportActionBar(mainToolBar);
@@ -123,9 +134,9 @@ public class MainActivity extends AppCompatActivity {
         horizontalLayoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, true);
         horizontalLayoutManager2 = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, true);
         horizontalLayoutManager3 = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, true);
-        sportsNewsAdapter = new SportsNewsAdapter(tempData);
-        educationNewsAdapter = new SportsNewsAdapter(tempData2);
-        internationalNewsAdapter = new SportsNewsAdapter(tempData3);
+        sportsNewsAdapter = new SportsNewsAdapter(sportsHeadline, context);
+        educationNewsAdapter = new SportsNewsAdapter(educationHeadline, context);
+        internationalNewsAdapter = new SportsNewsAdapter(intHeadline, context);
 
 
         sportsRv.setLayoutManager(horizontalLayoutManager);
@@ -139,12 +150,51 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void setUsername() {
+        SharedPreferences sharedPreferences = getSharedPreferences(LoginActivity.SHARED_PREF_BASIC_INFO, Context.MODE_PRIVATE);
+        name.setText(sharedPreferences.getString(LoginActivity.FIRST_NAME, "User"));
+    }
+
+    private void setDate() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM YYYY", Locale.getDefault());
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        date.setText(sdf.format(calendar.getTime()));
+    }
+
     private void setRetrofit() {
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         api = retrofit.create(NexsApi.class);
+        //will fetch 15 most recent articles
+        Call<ArticleResponse> call = api.articleGetAll((long) 0);
+        call.enqueue(new Callback<ArticleResponse>() {
+            @Override
+            public void onResponse(Call<ArticleResponse> call, Response<ArticleResponse> response) {
+                //latest articles
+                List<Article> responseArticles = response.body().getArticles();
+                for (Article a : responseArticles) {
+                    articles.add(a);
+                    if (a.getCategory().equals("Sports")) {
+                        sportsHeadline.add(new NewCard(a.getId(), a.getTitle(), a.getImgUrl()));
+                    } else if (a.getCategory().equals("International")) {
+                        intHeadline.add(new NewCard(a.getId(), a.getTitle(), a.getImgUrl()));
+                    } else {
+                        educationHeadline.add(new NewCard(a.getId(), a.getTitle(), a.getImgUrl()));
+                    }
+                }
+                sportsNewsAdapter.notifyDataSetChanged();
+                educationNewsAdapter.notifyDataSetChanged();
+                internationalNewsAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onFailure(Call<ArticleResponse> call, Throwable t) {
+
+            }
+        });
     }
 
     private void setTokenListener() {
@@ -153,10 +203,17 @@ public class MainActivity extends AppCompatActivity {
         FirebaseAuth.IdTokenListener listener = new FirebaseAuth.IdTokenListener() {
             @Override
             public void onIdTokenChanged(@NonNull FirebaseAuth firebaseAuth) {
+                if (FirebaseAuth.getInstance().getCurrentUser() == null)
+                    return;
                 Objects.requireNonNull(firebaseAuth.getCurrentUser()).getIdToken(true).addOnCompleteListener(new OnCompleteListener<GetTokenResult>() {
                     @Override
                     public void onComplete(@NonNull Task<GetTokenResult> task) {
+                        if (!task.isSuccessful()) {
+                            Log.i("news", "error");
+                            return;
+                        }
                         token = Objects.requireNonNull(task.getResult()).getToken();
+                        Log.i("news", token);
                     }
                 });
             }
@@ -206,8 +263,25 @@ public class MainActivity extends AppCompatActivity {
                     drawerLayout.closeDrawer(GravityCompat.START);
                     break;
                 case R.id.nav_bookmarks:
-                    Toast.makeText(MainActivity.this, "Bookmarks", Toast.LENGTH_SHORT).show();
                     drawerLayout.closeDrawer(GravityCompat.START);
+                    if (FirebaseAuth.getInstance().getCurrentUser() == null) {
+                        Toast.makeText(context, "Please Sign In", Toast.LENGTH_LONG).show();
+                        break;
+                    }
+                    LocalDataViewModel viewModel = new ViewModelProvider(MainActivity.this).get(LocalDataViewModel.class);
+                    Intent intent = new Intent(context, FeedActivity.class);
+                    viewModel.getBookmarkedIds().observe(MainActivity.this, new Observer<List<String>>() {
+                        @Override
+                        public void onChanged(List<String> strings) {
+                            if (strings.size() > 0) {
+                                intent.putExtra("showBookmarks", true);
+                                startActivity(intent);
+                            } else {
+                                Toast.makeText(context, "No Bookmarks", Toast.LENGTH_LONG).show();
+                            }
+                            viewModel.getBookmarkedIds().removeObserver(this);
+                        }
+                    });
                     break;
                 default:
                     loginOrLogout();
@@ -222,10 +296,18 @@ public class MainActivity extends AppCompatActivity {
         if (FirebaseAuth.getInstance().getCurrentUser() == null) {
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
+            finish();
         } else {
+            SharedPreferences sharedPreferences = getSharedPreferences(LoginActivity.SHARED_PREF_BASIC_INFO, MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.remove(LoginActivity.FIRST_NAME);
+            editor.apply();
+            LocalDataViewModel viewModel = new ViewModelProvider(this).get(LocalDataViewModel.class);
+            viewModel.deleteAllBookmarks();
+            viewModel.deleteAllLikes();
             FirebaseAuth.getInstance().signOut();
-            Toast.makeText(this, "Logged Out", Toast.LENGTH_LONG).show();
-            recreate();
+            setUsername();
+            navigationView.getMenu().getItem(2).setTitle("Log In").setIcon(ContextCompat.getDrawable(context, R.drawable.ic_baseline_login_24));
         }
     }
 }

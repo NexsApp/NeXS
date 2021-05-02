@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.ivbaranov:materialfavoritebutton:0.1.5@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/528894a9fa755ed65c995ded6c0befeb/jetified-materialfavoritebutton-0.1.5/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/528894a9fa755ed65c995ded6c0befeb/jetified-materialfavoritebutton-0.1.5/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/528894a9fa755ed65c995ded6c0befeb/jetified-materialfavoritebutton-0.1.5/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/51d4567d4ce257fde750929e8a7ccc2a/jetified-materialfavoritebutton-0.1.5/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/51d4567d4ce257fde750929e8a7ccc2a/jetified-materialfavoritebutton-0.1.5/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/51d4567d4ce257fde750929e8a7ccc2a/jetified-materialfavoritebutton-0.1.5/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.ivbaranov/materialfavoritebutton/0.1.5/102d9b139691a9a3ee4c67068e819571e399c454/materialfavoritebutton-0.1.5-javadoc.jar!/" />

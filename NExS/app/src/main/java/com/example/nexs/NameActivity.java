@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class NameActivity extends AppCompatActivity {
@@ -63,11 +64,24 @@ public class NameActivity extends AppCompatActivity {
         intent.putExtra(FIRST_NAME, firstName);
         intent.putExtra(MIDDLE_NAME, middleName);
         intent.putExtra(LAST_NAME, lastName);
-        startActivity(intent);
-        finish();
+        startActivityForResult(intent, 1);
     }
 
     private void showToast(String message) {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                boolean authSuccess = data.getBooleanExtra("success", false);
+                Intent intent = new Intent();
+                intent.putExtra("success", authSuccess);
+                setResult(RESULT_OK, intent);
+                finish();
+            }
+        }
     }
 }

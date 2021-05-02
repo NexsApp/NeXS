@@ -3,95 +3,161 @@ package com.example.nexs;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.nexs.adapters.ViewPagerAdapter;
-import com.example.nexs.models.Slide;
-import com.google.firebase.auth.FirebaseAuth;
+import com.example.nexs.models.Article;
+import com.example.nexs.models.ArticleResponse;
+import com.example.nexs.room.BookmarkedArticle;
+import com.example.nexs.room.LikedArticle;
+import com.example.nexs.room.viewmodel.LocalDataViewModel;
+import com.example.nexs.utility.LoadingDialog;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
+import java.util.Set;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class FeedActivity extends AppCompatActivity {
 
     private ViewPagerAdapter viewPagerAdapter;
     private ViewPager2 viewPager2;
-    private List<Slide> slideList = new ArrayList<>();
+    private List<BookmarkedArticle> slideList = new ArrayList<>();
+    private LocalDataViewModel viewModel;
+    private boolean showBookmarks;
+    private boolean showById;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed);
-        createSlides();
-        //viewpager = findViewById(R.id.viewPagerSlider);
+        viewPagerAdapter = new ViewPagerAdapter(slideList, this);
         viewPager2 = findViewById(R.id.viewPagerSlider);
-        viewPagerAdapter = new ViewPagerAdapter(slideList, FeedActivity.this);
-        //viewpager.setAdapter(viewPagerAdapter);
         viewPager2.setPageTransformer(new DepthPageTransformer());
+        showBookmarks = shouldShowBookmarkOnly();
+        showById = shouldShowById();
+        setViewModel();
+        if (showById) {
+            fetchAndShow();
+        } else if (!showBookmarks) {
+            createSlides();
+            viewPagerAdapter.lastTime = slideList.get(slideList.size() - 1).getCreatedAt();
+        }
         //viewPager2.setOverScrollMode(View.OVER_SCROLL_NEVER);
         viewPager2.setAdapter(viewPagerAdapter);
     }
 
+    private void fetchAndShow() {
+        LoadingDialog dialog = new LoadingDialog(this);
+        dialog.showDialog();
+        Call<ArticleResponse> call = MainActivity.api.articleGetById(getIntent().getStringExtra("articleId"));
+        call.enqueue(new Callback<ArticleResponse>() {
+            @Override
+            public void onResponse(Call<ArticleResponse> call, Response<ArticleResponse> response) {
+                dialog.stopDialog();
+                if (response.code() == 200) {
+                    if (response.body().getCode() == 200) {
+                        for (Article a : response.body().getArticles()) {
+                            BookmarkedArticle slide = new BookmarkedArticle();
+                            slide.setDescription(a.getDescription());
+                            slide.setTitle(a.getTitle());
+                            slide.setId(a.getId());
+                            slide.setImgUrl(a.getImgUrl());
+                            slide.setSourceUrl(a.getSourceUrl());
+                            slide.setLikes(a.getLikes());
+                            slide.setCategory(a.getCategory());
+                            slide.setCreatedAt(a.getCreatedAt());
+                            slideList.add(slide);
+                            viewPagerAdapter.notifyDataSetChanged();
+                        }
+                    } else {
+                        Toast.makeText(FeedActivity.this, "Oops! Something went Wrong", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(FeedActivity.this, "Oops! Something went Wrong", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArticleResponse> call, Throwable t) {
+                dialog.stopDialog();
+                Toast.makeText(FeedActivity.this, "Oop! Something went Wrong", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private boolean shouldShowById() {
+        Intent intent = getIntent();
+        return intent.getBooleanExtra("showById", false);
+    }
+
+    private boolean shouldShowBookmarkOnly() {
+        Intent intent = getIntent();
+        return intent.getBooleanExtra("showBookmarks", false);
+    }
+
+    private void setViewModel() {
+        viewModel = new ViewModelProvider(this).get(LocalDataViewModel.class);
+        viewModel.getBookmarkedIds().observe(this, new Observer<List<String>>() {
+            @Override
+            public void onChanged(List<String> strings) {
+                Set<String> set = new HashSet<>(strings);
+                viewPagerAdapter.setBookmarkedIds(set);
+                viewPagerAdapter.notifyItemChanged(viewPager2.getCurrentItem());
+            }
+        });
+        viewModel.getLikes().observe(this, new Observer<List<LikedArticle>>() {
+            @Override
+            public void onChanged(List<LikedArticle> likedArticles) {
+                Set<LikedArticle> set = new HashSet<>(likedArticles);
+                viewPagerAdapter.setLikedIds(set);
+                viewPagerAdapter.notifyItemChanged(viewPager2.getCurrentItem());
+            }
+        });
+        if (showBookmarks) {
+            viewModel.getBookmarks().observe(this, new Observer<List<BookmarkedArticle>>() {
+                @Override
+                public void onChanged(List<BookmarkedArticle> bookmarkedArticles) {
+                    slideList.addAll(bookmarkedArticles);
+                    viewModel.getBookmarks().removeObserver(this::onChanged);
+                }
+            });
+        }
+    }
+
     private void createSlides() {
-        Slide slide1 = new Slide();
-        slide1.setAuthor("Seemant");
-        slide1.setDate("24th Oct");
-        slide1.setDesc("fdasdf dasfkajdflas dsfkajdflkdsfj kldfjalsdkfjlkdsf jlkadsjfs" +
-                "dsfjklasdfj dfkjsldflsdf djfklsdjflsdkaf dkfjdslfksd jlkdfjsd fdsf" +
-                "fjlksdflksdf dfjlkdfjldskf jdlfsdlfkdf jdlkfjsdlfkjdlf slkdfjlksdfjdlfk" +
-                "dsfjlasfkdsaf dfjdlskfjdlskf");
-        slide1.setHeading("This is a demo post straight from Android Studio");
-        slide1.setId(1);
-        slide1.setLikesCount(15);
-        slide1.setImageURL("https://images.pexels.com/photos/1112290/pexels-photo-1112290.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+        for (Article a : MainActivity.articles) {
+            BookmarkedArticle slide = new BookmarkedArticle();
+            slide.setDescription(a.getDescription());
+            slide.setTitle(a.getTitle());
+            slide.setId(a.getId());
+            slide.setImgUrl(a.getImgUrl());
+            slide.setSourceUrl(a.getSourceUrl());
+            slide.setLikes(a.getLikes());
+            slide.setCategory(a.getCategory());
+            slide.setCreatedAt(a.getCreatedAt());
+            slideList.add(slide);
+        }
+    }
 
-
-        slideList.add(slide1);
-
-        Slide slide2 = new Slide();
-        slide2.setAuthor("Shekhar");
-        slide2.setDate("24th Oct");
-        slide2.setDesc("fdasdf dasfkajdflas dsfkajdflkdsfj kldfjalsdkfjlkdsf jlkadsjfs" +
-                "dsfjklasdfj dfkjsldflsdf djfklsdjflsdkaf dkfjdslfksd jlkdfjsd fdsf" +
-                "fjlksdflksdf dfjlkdfjldskf jdlfsdlfkdf jdlkfjsdlfkjdlf slkdfjlksdfjdlfk" +
-                "dsfjlasfkdsaf dfjdlskfjdlskf");
-        slide2.setHeading("This is a demo post straight from Android Studio");
-        slide2.setId(2);
-        slide2.setLikesCount(15);
-        slide2.setImageURL("https://images.pexels.com/photos/1112290/pexels-photo-1112290.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
-
-        slideList.add(slide2);
-
-        Slide slide3 = new Slide();
-        slide3.setAuthor("Shekhar");
-        slide3.setDate("24th Oct");
-        slide3.setDesc("fdasdf dasfkajdflas dsfkajdflkdsfj kldfjalsdkfjlkdsf jlkadsjfs" +
-                "dsfjklasdfj dfkjsldflsdf djfklsdjflsdkaf dkfjdslfksd jlkdfjsd fdsf" +
-                "fjlksdflksdf dfjlkdfjldskf jdlfsdlfkdf jdlkfjsdlfkjdlf slkdfjlksdfjdlfk" +
-                "dsfjlasfkdsaf dfjdlskfjdlskf");
-        slide3.setHeading("This is a demo post straight from Android Studio");
-        slide3.setId(3);
-        slide3.setLikesCount(15);
-        slide3.setImageURL("https://images.pexels.com/photos/1112290/pexels-photo-1112290.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
-
-        slideList.add(slide3);
-
-        Slide slide4 = new Slide();
-        slide4.setAuthor("Shekhar");
-        slide4.setDate("24th Oct");
-        slide4.setDesc("fdasdf dasfkajdflas dsfkajdflkdsfj kldfjalsdkfjlkdsf jlkadsjfs" +
-                "dsfjklasdfj dfkjsldflsdf djfklsdjflsdkaf dkfjdslfksd jlkdfjsd fdsf" +
-                "fjlksdflksdf dfjlkdfjldskf jdlfsdlfkdf jdlkfjsdlfkjdlf slkdfjlksdfjdlfk" +
-                "dsfjlasfkdsaf dfjdlskfjdlskf");
-        slide4.setHeading("This is a demo post straight from Android Studio");
-        slide4.setId(4);
-        slide4.setLikesCount(15);
-        slide4.setImageURL("https://images.pexels.com/photos/1112290/pexels-photo-1112290.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
-
-        slideList.add(slide4);
+    private String getDate(Long createdAt) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd MM", Locale.getDefault());
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(createdAt);
+        return simpleDateFormat.format(calendar.getTime());
     }
 
     @RequiresApi(21)

@@ -26,12 +26,14 @@ public interface NexsApi {
     public static final String DELETE_BY_ID = "deleteOne";
     public static final String UPDATE_BY_ID = "updateOne";
     public static final String LIKE_BY_ID = "like";
+    public static final String DISLIKE_BY_ID = "dislike";
     public static final String NEW_POST = "newPost";
 
     //USER FUNCTIONS
     public static final String NEW_USER = "newUser";
     public static final String GET_USER_BY_ID = "getUser";
     public static final String ADD_BOOKMARK = "addBookmark";
+    public static final String REMOVE_BOOKMARK = "removeBookmark";
     public static final String ADD_COINS = "addCoin";
 
     @GET("/?resource=article&func=" + GET_ALL)
@@ -58,6 +60,9 @@ public interface NexsApi {
     @PUT("/?resource=article&func=" + LIKE_BY_ID)
     Call<ArticleResponse> articleLikeById(@Header("Authorization") @NonNull String token, @Query("id") @NonNull String id);
 
+    @DELETE("/?resource=article&func=" + DISLIKE_BY_ID)
+    Call<ArticleResponse> articleDislikeById(@Header("Authorization") @NonNull String token, @Query("id") @NonNull String id);
+
     @POST("/?resource=user&func=" + NEW_USER)
     Call<UserResponse> userNewUser(@Body @NonNull User user);
 
@@ -65,8 +70,11 @@ public interface NexsApi {
     Call<UserResponse> userGetUserById(@Query("uid") String uid);
 
     @PUT("/?resource=user&func=" + ADD_BOOKMARK)
-    Call<UserResponse> userAddBookmark(@Header("Authorization") @NonNull String token, @Query("uid") String uid, @Query("articleId") String articleId);
+    Call<UserResponse> userAddBookmark(@Header("Authorization") @NonNull String token, @Query("articleid") String articleId);
+
+    @DELETE("/?resource=user&func=" + REMOVE_BOOKMARK)
+    Call<UserResponse> userRemoveBookmark(@Header("Authorization") @NonNull String token, @Query("articleid") String articleId);
 
     @PUT("/?resource=user&func=" + ADD_COINS)
-    Call<UserResponse> userAddCoin(@Header("Authorization") @NonNull String token, @Query("uid") String uid, @Query("amount") int amt);
+    Call<UserResponse> userAddCoin(@Header("Authorization") @NonNull String token, @Query("amount") int amt);
 }

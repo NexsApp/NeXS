@@ -1,16 +1,26 @@
 package com.example.nexs.models;
 
 public class NewCard {
-    private int imgResourceId;
+    private String id;
+    private String imgResource;
     private String newsHeadLine;
 
-    public NewCard(String newsHeadLine, int imgId) {
+    public NewCard(String id, String newsHeadLine, String imgResource) {
+        this.id = id;
         this.newsHeadLine = newsHeadLine;
-        this.imgResourceId = imgId;
+        this.imgResource = imgResource;
     }
 
-    public int getImgResourceId() {
-        return imgResourceId;
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getImgResource() {
+        return imgResource;
     }
 
     public String getNewsHeadLine() {

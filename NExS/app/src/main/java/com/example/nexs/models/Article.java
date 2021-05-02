@@ -14,9 +14,6 @@ public class Article {
     @SerializedName("description")
     @Expose
     private String description;
-    @SerializedName("summary")
-    @Expose
-    private String summary;
     @SerializedName("imgUrl")
     @Expose
     private String imgUrl;
@@ -58,14 +55,6 @@ public class Article {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getSummary() {
-        return summary;
-    }
-
-    public void setSummary(String summary) {
-        this.summary = summary;
     }
 
     public String getImgUrl() {

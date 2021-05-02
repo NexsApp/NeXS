@@ -4,10 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingStart="0dp"
+    android:paddingEnd="7dp"
     tools:context=".SplashScreen">
 
     <ImageView
-        android:id="@+id/logosplash"
+        android:id="@+id/logoSplash"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -2049,7 +2049,7 @@ id line3
 id linear
 id listMode
 id list_item
-id logosplash
+id logoSplash
 id main_menu_search
 id main_toolbar
 id masked
@@ -2147,7 +2147,6 @@ id progress_circular
 id progress_horizontal
 id radio
 id ratio
-id react_layout
 id rectangles
 id reverseSawtooth
 id right
@@ -2167,6 +2166,7 @@ id scrollIndicatorDown
 id scrollIndicatorUp
 id scrollView
 id scrollable
+id scrollview
 id search_badge
 id search_bar
 id search_button
@@ -2596,10 +2596,12 @@ string path_password_eye_mask_visible
 string path_password_strike_through
 string profile
 string project_id
+string read_more
 string search
 string search_menu_title
 string sports_news_title
 string status_bar_notification_info_overflow
+string tap_to_read_more_about_this_article
 string user_name_string
 string view_feed
 string view_your_bookmarked_news
