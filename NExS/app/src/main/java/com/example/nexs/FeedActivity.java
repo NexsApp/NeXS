@@ -49,13 +49,13 @@ public class FeedActivity extends AppCompatActivity {
         viewPager2.setPageTransformer(new DepthPageTransformer());
         showBookmarks = shouldShowBookmarkOnly();
         showById = shouldShowById();
-        setViewModel();
         if (showById) {
             fetchAndShow();
         } else if (!showBookmarks) {
             createSlides();
             viewPagerAdapter.lastTime = slideList.get(slideList.size() - 1).getCreatedAt();
         }
+        setViewModel();
         //viewPager2.setOverScrollMode(View.OVER_SCROLL_NEVER);
         viewPager2.setAdapter(viewPagerAdapter);
     }
