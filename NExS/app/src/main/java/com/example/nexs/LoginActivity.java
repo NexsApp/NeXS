@@ -222,6 +222,11 @@ public class LoginActivity extends AppCompatActivity {
                                 }
                             });
                         }
+                        if (bookmarks.size() == 0) {
+                            dialog.stopDialog();
+                            startActivity(intent);
+                            finish();
+                        }
                     } else {
                         failureTask();
                     }
@@ -245,6 +250,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void failureTask() {
+        dialog.stopDialog();
         if (FirebaseAuth.getInstance().getCurrentUser() != null) {
             LocalDataViewModel viewModel = new ViewModelProvider(this).get(LocalDataViewModel.class);
             viewModel.deleteAllBookmarks();

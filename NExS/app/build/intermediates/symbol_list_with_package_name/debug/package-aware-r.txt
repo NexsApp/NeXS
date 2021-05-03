@@ -2488,6 +2488,7 @@ string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
 string app_name
 string appbar_scrolling_view_behavior
+string background
 string bookmarks
 string bottom_sheet_behavior
 string bottomsheet_action_expand_halfway
@@ -2520,6 +2521,7 @@ string date
 string date_string
 string default_web_client_id
 string education_news_title
+string enter_your_phone_number
 string error_icon_content_description
 string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
@@ -2528,6 +2530,7 @@ string fallback_menu_item_copy_link
 string fallback_menu_item_open_in_browser
 string fallback_menu_item_share_link
 string fcm_fallback_notification_channel_label
+string first_name
 string gcm_defaultSenderId
 string google_api_key
 string google_app_id
@@ -2537,6 +2540,9 @@ string hide_bottom_view_on_scroll_behavior
 string icon_content_description
 string international_news_title
 string item_view_role_description
+string last_name
+string login_with_google
+string login_with_phone
 string logout
 string material_clock_display_divider
 string material_clock_toggle_content_description
@@ -2553,6 +2559,7 @@ string material_timepicker_minute
 string material_timepicker_pm
 string material_timepicker_select_time
 string material_timepicker_text_input_mode_description
+string middle_name
 string mtrl_badge_numberless_content_description
 string mtrl_chip_close_icon_content_description
 string mtrl_exceed_max_badge_number_content_description
@@ -2590,6 +2597,9 @@ string mtrl_picker_toggle_to_text_input_mode
 string mtrl_picker_toggle_to_year_selection
 string nav_app_bar_navigate_up_description
 string nav_app_bar_open_drawer_description
+string nexs
+string next
+string otp
 string password_toggle_content_description
 string path_password_eye
 string path_password_eye_mask_strike_through
@@ -2600,6 +2610,7 @@ string project_id
 string read_more
 string search
 string search_menu_title
+string send_otp
 string share
 string sports_news_title
 string status_bar_notification_info_overflow
