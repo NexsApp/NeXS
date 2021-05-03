@@ -79,13 +79,13 @@ public class ViewPagerAdapter extends RecyclerView.Adapter<ViewPagerAdapter.Page
     @Override
     public void onBindViewHolder(@NonNull PagerViewHolder holder, int position) {
         if (slideList.size() - position <= 7 && !fetching) {
+            fetching = true;
             fetchMoreArticles();
         }
         holder.setPagerViewHolder(slideList.get(position));
     }
 
     private void fetchMoreArticles() {
-        fetching = true;
         Call<ArticleResponse> call = MainActivity.api.articleGetAll(lastTime);
         call.enqueue(new Callback<ArticleResponse>() {
             @Override
