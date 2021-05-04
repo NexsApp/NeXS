@@ -47,17 +47,15 @@ public class FeedActivity extends AppCompatActivity {
         viewPagerAdapter = new ViewPagerAdapter(slideList, this);
         viewPager2 = findViewById(R.id.viewPagerSlider);
         viewPager2.setPageTransformer(new DepthPageTransformer());
+        viewPager2.setAdapter(viewPagerAdapter);
         showBookmarks = shouldShowBookmarkOnly();
         showById = shouldShowById();
+        setViewModel();
         if (showById) {
             fetchAndShow();
         } else if (!showBookmarks) {
             createSlides();
-            viewPagerAdapter.lastTime = slideList.get(slideList.size() - 1).getCreatedAt();
         }
-        setViewModel();
-        //viewPager2.setOverScrollMode(View.OVER_SCROLL_NEVER);
-        viewPager2.setAdapter(viewPagerAdapter);
     }
 
     private void fetchAndShow() {
@@ -70,6 +68,7 @@ public class FeedActivity extends AppCompatActivity {
                 dialog.stopDialog();
                 if (response.code() == 200) {
                     if (response.body().getCode() == 200) {
+                        viewPagerAdapter.lastTime = response.body().getArticles().get(response.body().getArticles().size() - 1).getCreatedAt();
                         for (Article a : response.body().getArticles()) {
                             BookmarkedArticle slide = new BookmarkedArticle();
                             slide.setDescription(a.getDescription());
@@ -132,6 +131,7 @@ public class FeedActivity extends AppCompatActivity {
                 @Override
                 public void onChanged(List<BookmarkedArticle> bookmarkedArticles) {
                     slideList.addAll(bookmarkedArticles);
+                    viewPagerAdapter.notifyDataSetChanged();
                     viewModel.getBookmarks().removeObserver(this::onChanged);
                     for (int i = 0; i < bookmarkedArticles.size(); ++i) {
                         int curr = i;

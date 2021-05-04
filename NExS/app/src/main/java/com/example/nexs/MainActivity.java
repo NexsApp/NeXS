@@ -179,6 +179,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<ArticleResponse> call, Response<ArticleResponse> response) {
                 //latest articles
                 List<Article> responseArticles = response.body().getArticles();
+                articles.clear();
                 for (Article a : responseArticles) {
                     articles.add(a);
                     if (a.getCategory().equals("Sports")) {

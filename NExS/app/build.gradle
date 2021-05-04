@@ -12,6 +12,12 @@ android {
             keyPassword 'nexsapp123'
             keyAlias 'key0'
         }
+        release {
+            storeFile file(projectDir.absolutePath + '/nexs_keystore.jks')
+            storePassword 'nexsapp123'
+            keyAlias 'key0'
+            keyPassword 'nexsapp123'
+        }
     }
     compileSdkVersion 30
     buildToolsVersion "29.0.3"
@@ -30,6 +36,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
     compileOptions {

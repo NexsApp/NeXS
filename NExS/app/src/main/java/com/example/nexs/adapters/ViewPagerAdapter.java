@@ -50,7 +50,7 @@ public class ViewPagerAdapter extends RecyclerView.Adapter<ViewPagerAdapter.Page
     private Set<LikedArticle> likedIds = new HashSet<>();
     private LocalDataViewModel viewModel;
     public Long lastTime = 0L;
-    boolean fetching = false;
+    public boolean fetching = false;
 
     public void setBookmarkedIds(Set<String> bookmarkedIds) {
         this.bookmarkedIds = bookmarkedIds;
