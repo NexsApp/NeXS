@@ -1,7 +1,7 @@
-#Tue May 04 09:18:10 IST 2021
-base.0=/home/hitesh/codes/projects/nexs/android/NExS/app/build/intermediates/dex/release/mergeDexRelease/classes.dex
-path.1=classes2.dex
-renamed.1=classes2.dex
-path.0=classes.dex
-renamed.0=classes.dex
+#Sun Jun 13 22:01:33 IST 2021
 base.1=/home/hitesh/codes/projects/nexs/android/NExS/app/build/intermediates/dex/release/mergeDexRelease/classes2.dex
+path.1=classes2.dex
+base.0=/home/hitesh/codes/projects/nexs/android/NExS/app/build/intermediates/dex/release/mergeDexRelease/classes.dex
+renamed.1=classes2.dex
+renamed.0=classes.dex
+path.0=classes.dex

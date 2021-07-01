@@ -1,11 +1,17 @@
 package com.example.nexs;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.SystemClock;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -14,10 +20,12 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.example.nexs.adapters.ViewPagerAdapter;
 import com.example.nexs.models.Article;
 import com.example.nexs.models.ArticleResponse;
+import com.example.nexs.models.UserResponse;
 import com.example.nexs.room.BookmarkedArticle;
 import com.example.nexs.room.LikedArticle;
 import com.example.nexs.room.viewmodel.LocalDataViewModel;
 import com.example.nexs.utility.LoadingDialog;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -26,6 +34,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,10 +45,57 @@ public class FeedActivity extends AppCompatActivity {
 
     private ViewPagerAdapter viewPagerAdapter;
     private ViewPager2 viewPager2;
-    private List<BookmarkedArticle> slideList = new ArrayList<>();
+    private final List<BookmarkedArticle> slideList = new ArrayList<>();
     private LocalDataViewModel viewModel;
     private boolean showBookmarks;
-    private boolean showById;
+    private AlertDialog dialog;
+    private ExecutorService executorService;
+    private int seconds = 0;
+    private final Set<Integer> set = new HashSet<>();
+//    private final int LOW_NUMBER = 24;
+    private final int HIGH_NUMBER = 29;
+//    private final int LOW_TIME = 240;
+    private final int HIGH_TIME = 300;
+    private final int COINS_TO_ADD = 1;
+    private int setNumber = 1;
+    private final ViewPager2.OnPageChangeCallback callback = new ViewPager2.OnPageChangeCallback() {
+        @Override
+        public void onPageSelected(int position) {
+//            Log.i("slide", position +" "+seconds);
+            if (position != 0 && position % 30 == 0) {
+                ++setNumber;
+                return;
+            }
+            if (position >= (HIGH_NUMBER * setNumber - 5) && position <= HIGH_NUMBER * setNumber && !set.contains((position - 1)/HIGH_NUMBER)) {
+                if (seconds >= (HIGH_TIME * setNumber - 60) && seconds <= HIGH_TIME * setNumber) {
+//                    Log.i("slide", "coins");
+                    Call<UserResponse> call = MainActivity.api.userAddCoin(MainActivity.token, COINS_TO_ADD);
+                    call.enqueue(new Callback<UserResponse>() {
+                        @Override
+                        public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
+                            if (response.isSuccessful()) {
+                                assert response.body() != null;
+                                if (response.body().getCode() == 200) {
+                                    dialog.show();
+//                                    Log.i("slide", "coins added");
+                                } else {
+                                    set.remove((position - 1)/HIGH_NUMBER);
+                                }
+                            } else {
+                                set.remove((position - 1) / HIGH_NUMBER);
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<UserResponse> call, Throwable t) {
+                            set.remove((position - 1)/HIGH_NUMBER);
+                        }
+                    });
+                    set.add((position - 1)/HIGH_NUMBER);
+                }
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,14 +105,50 @@ public class FeedActivity extends AppCompatActivity {
         viewPager2 = findViewById(R.id.viewPagerSlider);
         viewPager2.setPageTransformer(new DepthPageTransformer());
         viewPager2.setAdapter(viewPagerAdapter);
+        setBackgroundWork();
         showBookmarks = shouldShowBookmarkOnly();
-        showById = shouldShowById();
+        boolean showById = shouldShowById();
         setViewModel();
         if (showById) {
             fetchAndShow();
         } else if (!showBookmarks) {
             createSlides();
         }
+        createDialog();
+    }
+
+    private void createDialog() {
+        View view = getLayoutInflater().inflate(R.layout.view_coin_earned, findViewById(R.id.root), false);
+        dialog = new AlertDialog.Builder(this)
+                .setView(view)
+                .setCancelable(false)
+                .create();
+        view.findViewById(R.id.ok).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.cancel();
+            }
+        });
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+    }
+
+    private void setBackgroundWork() {
+        if (FirebaseAuth.getInstance().getCurrentUser() == null) {
+            Toast.makeText(this, "Please sign-in to get rewards", Toast.LENGTH_LONG).show();
+            return;
+        }
+        viewPager2.registerOnPageChangeCallback(callback);
+        executorService = Executors.newSingleThreadExecutor();
+        //Starting Timer
+        executorService.execute(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    SystemClock.sleep(1000);
+                    ++seconds;
+                }
+            }
+        });
     }
 
     private void fetchAndShow() {
@@ -184,10 +277,10 @@ public class FeedActivity extends AppCompatActivity {
 
     @RequiresApi(21)
     public static class DepthPageTransformer implements ViewPager2.PageTransformer {
-        private static final float MIN_SCALE = 0.75f;
+        private static final float MIN_SCALE = 0.85f;
 
         public void transformPage(View view, float position) {
-            int pageWidth = view.getHeight();
+            int pageWidth = view.getWidth();
 
             if (position < -1) { // [-Infinity,-1)
                 // This page is way off-screen to the left.
@@ -198,6 +291,7 @@ public class FeedActivity extends AppCompatActivity {
                 view.setAlpha(1f);
                 view.setTranslationX(0f);
                 view.setTranslationZ(0f);
+                view.setTranslationY(0f);
                 view.setScaleX(1f);
                 view.setScaleY(1f);
 

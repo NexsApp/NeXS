@@ -1705,6 +1705,8 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
+drawable coin
+drawable coin_dialog_bg
 drawable common_full_open_on_phone
 drawable common_google_signin_btn_icon_dark
 drawable common_google_signin_btn_icon_dark_focused
@@ -1807,6 +1809,7 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable ok_button_bg
 drawable placeholder
 drawable test_custom_background
 drawable tooltip_frame_dark
@@ -2125,6 +2128,7 @@ id notification_background
 id notification_main_column
 id notification_main_column_container
 id off
+id ok
 id on
 id otp
 id outline
@@ -2154,6 +2158,7 @@ id right
 id rightToLeft
 id right_icon
 id right_side
+id root
 id rounded
 id row_index_key
 id save_button
@@ -2454,6 +2459,7 @@ layout text_view_with_line_height_from_layout
 layout text_view_with_line_height_from_style
 layout text_view_with_theme_line_height
 layout text_view_without_line_height
+layout view_coin_earned
 menu drawer_menu
 menu main_menu
 mipmap ic_launcher
@@ -2497,6 +2503,7 @@ string character_counter_overflowed_content_description
 string character_counter_pattern
 string chip_text
 string clear_text_end_icon_content_description
+string coin_img
 string com_crashlytics_android_build_id
 string common_google_play_services_enable_button
 string common_google_play_services_enable_text
@@ -2516,6 +2523,7 @@ string common_google_play_services_wear_update_text
 string common_open_on_phone
 string common_signin_button_text
 string common_signin_button_text_long
+string congratulations
 string copy_toast_msg
 string date
 string date_string
@@ -2599,6 +2607,7 @@ string nav_app_bar_navigate_up_description
 string nav_app_bar_open_drawer_description
 string nexs
 string next
+string ok
 string otp
 string password_toggle_content_description
 string path_password_eye
@@ -2619,6 +2628,7 @@ string user_name_string
 string view_feed
 string view_your_bookmarked_news
 string welcome
+string you_earned_1_coin
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style AndroidThemeColorAccentYellow

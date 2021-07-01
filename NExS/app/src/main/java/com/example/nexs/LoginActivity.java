@@ -203,9 +203,9 @@ public class LoginActivity extends AppCompatActivity {
                                                 slide.setCreatedAt(a.getCreatedAt());
                                                 viewModel.addBookmark(slide);
                                             }
-                                        } else {
+                                        } /*else {
                                             failureTask();
-                                        }
+                                        }*/
                                     } else {
                                         failureTask();
                                     }
@@ -252,6 +252,7 @@ public class LoginActivity extends AppCompatActivity {
     public void failureTask() {
         dialog.stopDialog();
         if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+            saveName("User");
             LocalDataViewModel viewModel = new ViewModelProvider(this).get(LocalDataViewModel.class);
             viewModel.deleteAllBookmarks();
             viewModel.deleteAllLikes();

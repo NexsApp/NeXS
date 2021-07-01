@@ -36,4 +36,8 @@
     <string name="enter_your_phone_number">Enter your phone number</string>
     <string name="otp">OTP</string>
     <string name="send_otp">Send OTP</string>
+    <string name="congratulations">Congratulations!</string>
+    <string name="you_earned_1_coin">You earned 1 coin</string>
+    <string name="ok">OK</string>
+    <string name="coin_img">coin_img</string>
 </resources>

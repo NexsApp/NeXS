@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:elevation="6dp"
+    android:background="@drawable/coin_dialog_bg"
+    android:padding="20dp">
+
+    <ImageView
+        android:layout_width="102dp"
+        android:layout_height="102dp"
+        android:src="@drawable/coin"
+        android:elevation="10dp"
+        android:contentDescription="@string/coin_img" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/congratulations"
+        android:textAllCaps="false"
+        android:textSize="22sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/you_earned_1_coin"
+        android:textAllCaps="false"
+        android:textSize="18sp"/>
+
+    <Button
+        android:id="@+id/ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ok"
+        android:background="@drawable/ok_button_bg"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:elevation="6dp"
+        android:layout_marginTop="10dp"/>
+
+</LinearLayout>

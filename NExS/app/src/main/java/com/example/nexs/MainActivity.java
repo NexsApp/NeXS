@@ -182,6 +182,11 @@ public class MainActivity extends AppCompatActivity {
                 articles.clear();
                 for (Article a : responseArticles) {
                     articles.add(a);
+                    //REMOVE
+                    for (int i = 0; i < 100; ++i) {
+                        articles.add(a);
+                    }
+                    //REMOVE
                     if (a.getCategory().equals("Sports")) {
                         sportsHeadline.add(new NewCard(a.getId(), a.getTitle(), a.getImgUrl()));
                     } else if (a.getCategory().equals("International")) {
