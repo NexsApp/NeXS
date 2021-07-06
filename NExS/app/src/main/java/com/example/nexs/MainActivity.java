@@ -77,18 +77,22 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView sportsRv;
     RecyclerView eduRv;
     RecyclerView internationalRv;
+    RecyclerView othersRv;
 
     RecyclerView.LayoutManager horizontalLayoutManager;
     RecyclerView.LayoutManager horizontalLayoutManager2;
     RecyclerView.LayoutManager horizontalLayoutManager3;
+    RecyclerView.LayoutManager horizontalLayoutManager4;
     SportsNewsAdapter sportsNewsAdapter;
     SportsNewsAdapter educationNewsAdapter;
     SportsNewsAdapter internationalNewsAdapter;
+    SportsNewsAdapter othersAdapter;
 
     //temporary data
     ArrayList<NewCard> sportsHeadline = new ArrayList<>();
     ArrayList<NewCard> educationHeadline = new ArrayList<>();
     ArrayList<NewCard> intHeadline = new ArrayList<>();
+    ArrayList<NewCard> othersHeadline = new ArrayList<>();
 
     //All articles
     public static final List<Article> articles = new ArrayList<>();
@@ -111,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
         mainToolBar = findViewById(R.id.main_toolbar);
         setSupportActionBar(mainToolBar);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp);
 
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -135,12 +139,17 @@ public class MainActivity extends AppCompatActivity {
         internationalRv = findViewById(R.id.international_news_rv);
         internationalRv.setHasFixedSize(true);
 
+        othersRv = findViewById(R.id.other_news_rv);
+        othersRv.setHasFixedSize(true);
+
         horizontalLayoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, true);
         horizontalLayoutManager2 = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, true);
         horizontalLayoutManager3 = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, true);
+        horizontalLayoutManager4 = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, true);
         sportsNewsAdapter = new SportsNewsAdapter(sportsHeadline, context);
         educationNewsAdapter = new SportsNewsAdapter(educationHeadline, context);
         internationalNewsAdapter = new SportsNewsAdapter(intHeadline, context);
+        othersAdapter = new SportsNewsAdapter(othersHeadline, context);
 
 
         sportsRv.setLayoutManager(horizontalLayoutManager);
@@ -152,6 +161,8 @@ public class MainActivity extends AppCompatActivity {
         internationalRv.setLayoutManager(horizontalLayoutManager3);
         internationalRv.setAdapter(internationalNewsAdapter);
 
+        othersRv.setLayoutManager(horizontalLayoutManager4);
+        othersRv.setAdapter(othersAdapter);
     }
 
     private void setUsername() {
@@ -178,26 +189,44 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ArticleResponse> call, Response<ArticleResponse> response) {
                 //latest articles
+                assert response.body() != null;
                 List<Article> responseArticles = response.body().getArticles();
                 articles.clear();
-                for (Article a : responseArticles) {
-                    articles.add(a);
-                    //REMOVE
-                    for (int i = 0; i < 100; ++i) {
-                        articles.add(a);
-                    }
-                    //REMOVE
-                    if (a.getCategory().equals("Sports")) {
-                        sportsHeadline.add(new NewCard(a.getId(), a.getTitle(), a.getImgUrl()));
-                    } else if (a.getCategory().equals("International")) {
-                        intHeadline.add(new NewCard(a.getId(), a.getTitle(), a.getImgUrl()));
-                    } else {
-                        educationHeadline.add(new NewCard(a.getId(), a.getTitle(), a.getImgUrl()));
-                    }
+                articles.addAll(responseArticles);
+            }
+
+            @Override
+            public void onFailure(Call<ArticleResponse> call, Throwable t) {
+
+            }
+        });
+        //Fetch Articles Category Wise
+        fetchThisCategory("Sports");
+        fetchThisCategory("Education");
+        fetchThisCategory("International");
+        fetchThisCategory("Others");
+    }
+
+    private void fetchThisCategory(String category) {
+        Call<ArticleResponse> call = api.articleGetByCategory(category);
+        call.enqueue(new Callback<ArticleResponse>() {
+            @Override
+            public void onResponse(Call<ArticleResponse> call, Response<ArticleResponse> response) {
+                assert response.body() != null;
+                List<Article> responseArticles = response.body().getArticles();
+                if (category.equals("Sports")) {
+                    addList(sportsHeadline, responseArticles);
+                    sportsNewsAdapter.notifyDataSetChanged();
+                } else if (category.equals("Education")) {
+                    addList(educationHeadline, responseArticles);
+                    educationNewsAdapter.notifyDataSetChanged();
+                } else if (category.equals("International")) {
+                    addList(intHeadline, responseArticles);
+                    internationalNewsAdapter.notifyDataSetChanged();
+                } else {
+                    addList(othersHeadline, responseArticles);
+                    othersAdapter.notifyDataSetChanged();
                 }
-                sportsNewsAdapter.notifyDataSetChanged();
-                educationNewsAdapter.notifyDataSetChanged();
-                internationalNewsAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -206,6 +235,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void addList(ArrayList<NewCard> list, List<Article> articles) {
+        if (articles == null)
+            return;
+        for (Article a : articles) {
+            list.add(new NewCard(a.getId(), a.getTitle(), a.getImgUrl()));
+        }
+    }
+
 
     private void setDynamicLink() {
         FirebaseDynamicLinks.getInstance()

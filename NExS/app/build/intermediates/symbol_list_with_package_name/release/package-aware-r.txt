@@ -2130,6 +2130,8 @@ id notification_main_column_container
 id off
 id ok
 id on
+id other_news_rv
+id other_news_title_tv
 id otp
 id outline
 id outward
@@ -2608,6 +2610,7 @@ string nav_app_bar_open_drawer_description
 string nexs
 string next
 string ok
+string others
 string otp
 string password_toggle_content_description
 string path_password_eye

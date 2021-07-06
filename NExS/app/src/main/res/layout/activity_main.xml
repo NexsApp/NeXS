@@ -150,6 +150,25 @@
                     app:layout_constraintStart_toStartOf="@+id/sports_news_title_tv"
                     app:layout_constraintTop_toBottomOf="@+id/international_news_title_tv" />
 
+                <TextView
+                    android:id="@+id/other_news_title_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/adobecleanbold"
+                    android:text="@string/others"
+                    android:textColor="#9C27B0"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="@+id/international_news_title_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/international_news_rv" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/other_news_rv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="@+id/international_news_title_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/other_news_title_tv" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
