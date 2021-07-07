@@ -1,6 +1,7 @@
 package com.example.nexs;
 
 import android.app.Application;
+import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,6 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -94,6 +96,8 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<NewCard> intHeadline = new ArrayList<>();
     ArrayList<NewCard> othersHeadline = new ArrayList<>();
 
+    private LoadingDialog loadingDialog;
+
     //All articles
     public static final List<Article> articles = new ArrayList<>();
 
@@ -104,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
 
         context = this;
         setTokenListener();
+        loadingDialog = new LoadingDialog(context);
         setRetrofit();
         setDynamicLink();
 
@@ -178,6 +183,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setRetrofit() {
+        loadingDialog.showDialog();
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -189,6 +195,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ArticleResponse> call, Response<ArticleResponse> response) {
                 //latest articles
+                loadingDialog.stopDialog();
                 assert response.body() != null;
                 List<Article> responseArticles = response.body().getArticles();
                 articles.clear();
@@ -197,7 +204,8 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ArticleResponse> call, Throwable t) {
-
+                loadingDialog.stopDialog();
+                Toast.makeText(context, "Oops! Something went wrong..", Toast.LENGTH_LONG).show();
             }
         });
         //Fetch Articles Category Wise
@@ -300,7 +308,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         if (isNotLoggedIn()) {
-            navigationView.getMenu().getItem(3).setTitle("Log In").setIcon(ContextCompat.getDrawable(this, R.drawable.ic_baseline_login_24));
+            navigationView.getMenu().getItem(2).setTitle("Log In").setIcon(ContextCompat.getDrawable(this, R.drawable.ic_baseline_login_24));
         }
     }
 
@@ -308,6 +316,9 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.main_menu, menu);
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = (SearchView) menu.findItem(R.id.main_menu_search).getActionView();
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         return true;
     }
 
@@ -333,10 +344,10 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.nav_profile:
+                /*case R.id.nav_profile:
                     Toast.makeText(MainActivity.this, "Profile", Toast.LENGTH_SHORT).show();
                     drawerLayout.closeDrawer(GravityCompat.START);
-                    break;
+                    break;*/
                 case R.id.nav_bookmarks:
                     drawerLayout.closeDrawer(GravityCompat.START);
                     if (FirebaseAuth.getInstance().getCurrentUser() == null) {

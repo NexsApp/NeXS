@@ -23,6 +23,7 @@ public interface NexsApi {
     public static final String GET_ALL = "getAll";
     public static final String GET_BY_ID = "getOne";
     public static final String GET_BY_CATEGORY = "getByCategory";
+    public static final String SEARCH = "search";
     public static final String DELETE_BY_ID = "deleteOne";
     public static final String UPDATE_BY_ID = "updateOne";
     public static final String LIKE_BY_ID = "like";
@@ -44,6 +45,9 @@ public interface NexsApi {
 
     @GET("/?resource=article&func=" + GET_BY_CATEGORY)
     Call<ArticleResponse> articleGetByCategory(@Query("category") @NonNull String category);
+
+    @GET("/?resource=article&func=" + SEARCH)
+    Call<ArticleResponse> searchArticles(@Query("category") @NonNull String text);
 
     @DELETE("/?resource=article&func=" + DELETE_BY_ID)
         //ADMIN

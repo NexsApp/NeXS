@@ -1,5 +1,6 @@
 package com.example.nexs;
 
+import android.app.SearchManager;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -49,12 +50,13 @@ public class FeedActivity extends AppCompatActivity {
     private LocalDataViewModel viewModel;
     private boolean showBookmarks;
     private AlertDialog dialog;
+    private LoadingDialog loadingDialog;
     private ExecutorService executorService;
     private int seconds = 0;
     private final Set<Integer> set = new HashSet<>();
-//    private final int LOW_NUMBER = 24;
+    //    private final int LOW_NUMBER = 24;
     private final int HIGH_NUMBER = 29;
-//    private final int LOW_TIME = 240;
+    //    private final int LOW_TIME = 240;
     private final int HIGH_TIME = 300;
     private final int COINS_TO_ADD = 1;
     private int setNumber = 1;
@@ -66,7 +68,7 @@ public class FeedActivity extends AppCompatActivity {
                 ++setNumber;
                 return;
             }
-            if (position >= (HIGH_NUMBER * setNumber - 5) && position <= HIGH_NUMBER * setNumber && !set.contains((position - 1)/HIGH_NUMBER)) {
+            if (position >= (HIGH_NUMBER * setNumber - 5) && position <= HIGH_NUMBER * setNumber && !set.contains((position - 1) / HIGH_NUMBER)) {
                 if (seconds >= (HIGH_TIME * setNumber - 60) && seconds <= HIGH_TIME * setNumber) {
 //                    Log.i("slide", "coins");
                     Call<UserResponse> call = MainActivity.api.userAddCoin(MainActivity.token, COINS_TO_ADD);
@@ -79,7 +81,7 @@ public class FeedActivity extends AppCompatActivity {
                                     dialog.show();
 //                                    Log.i("slide", "coins added");
                                 } else {
-                                    set.remove((position - 1)/HIGH_NUMBER);
+                                    set.remove((position - 1) / HIGH_NUMBER);
                                 }
                             } else {
                                 set.remove((position - 1) / HIGH_NUMBER);
@@ -88,10 +90,10 @@ public class FeedActivity extends AppCompatActivity {
 
                         @Override
                         public void onFailure(Call<UserResponse> call, Throwable t) {
-                            set.remove((position - 1)/HIGH_NUMBER);
+                            set.remove((position - 1) / HIGH_NUMBER);
                         }
                     });
-                    set.add((position - 1)/HIGH_NUMBER);
+                    set.add((position - 1) / HIGH_NUMBER);
                 }
             }
         }
@@ -105,16 +107,65 @@ public class FeedActivity extends AppCompatActivity {
         viewPager2 = findViewById(R.id.viewPagerSlider);
         viewPager2.setPageTransformer(new DepthPageTransformer());
         viewPager2.setAdapter(viewPagerAdapter);
+        loadingDialog = new LoadingDialog(this);
         setBackgroundWork();
         showBookmarks = shouldShowBookmarkOnly();
         boolean showById = shouldShowById();
         setViewModel();
-        if (showById) {
-            fetchAndShow();
-        } else if (!showBookmarks) {
-            createSlides();
+        if (searched()) {
+            loadingDialog.showDialog();
+            fetchSearchResult();
+        } else {
+            if (showById) {
+                fetchAndShow();
+            } else if (!showBookmarks) {
+                createSlides();
+            }
         }
         createDialog();
+    }
+
+    private void fetchSearchResult() {
+        Call<ArticleResponse> call = MainActivity.api.searchArticles(getIntent().getStringExtra(SearchManager.QUERY));
+        call.enqueue(new Callback<ArticleResponse>() {
+            @Override
+            public void onResponse(Call<ArticleResponse> call, Response<ArticleResponse> response) {
+                loadingDialog.stopDialog();
+                if (response.code() == 200) {
+                    if (response.body().getCode() == 200) {
+                        if (response.body().getArticles() == null) {
+                            Toast.makeText(FeedActivity.this, "0 matches", Toast.LENGTH_LONG).show();
+                            createSlides();
+                            return;
+                        }
+                        viewPagerAdapter.lastTime = response.body().getArticles().get(response.body().getArticles().size() - 1).getCreatedAt();
+                        for (Article a : response.body().getArticles()) {
+                            BookmarkedArticle slide = new BookmarkedArticle();
+                            slide.setDescription(a.getDescription());
+                            slide.setTitle(a.getTitle());
+                            slide.setId(a.getId());
+                            slide.setImgUrl(a.getImgUrl());
+                            slide.setSourceUrl(a.getSourceUrl());
+                            slide.setLikes(a.getLikes());
+                            slide.setCategory(a.getCategory());
+                            slide.setCreatedAt(a.getCreatedAt());
+                            slideList.add(slide);
+                            viewPagerAdapter.notifyDataSetChanged();
+                        }
+                    } else {
+                        Toast.makeText(FeedActivity.this, "Oops! Something went Wrong", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(FeedActivity.this, "Oops! Something went Wrong", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArticleResponse> call, Throwable t) {
+                loadingDialog.stopDialog();
+                Toast.makeText(FeedActivity.this, "Oops! Something went Wrong", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void createDialog() {
@@ -189,6 +240,14 @@ public class FeedActivity extends AppCompatActivity {
                 Toast.makeText(FeedActivity.this, "Oop! Something went Wrong", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private boolean searched() {
+        Intent intent = getIntent();
+        if (Intent.ACTION_SEARCH.equals(getIntent().getAction())) {
+            return true;
+        }
+        return false;
     }
 
     private boolean shouldShowById() {
@@ -266,6 +325,7 @@ public class FeedActivity extends AppCompatActivity {
             slide.setCreatedAt(a.getCreatedAt());
             slideList.add(slide);
         }
+        viewPagerAdapter.notifyDataSetChanged();
     }
 
     private String getDate(Long createdAt) {
