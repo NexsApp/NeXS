@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
 
         name = findViewById(R.id.user_name_tv);
         date = findViewById(R.id.date_tv);
-        setDate();
+        date.setText(getDate());
         setUsername();
 
         mainToolBar = findViewById(R.id.main_toolbar);
@@ -125,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation_drawer);
+        ((TextView) navigationView.getHeaderView(0).findViewById(R.id.textView)).setText(getDate());
         navigationView.setNavigationItemSelectedListener(navigationItemSelectedListener);
 
         feedButton = findViewById(R.id.feed_button);
@@ -175,11 +176,11 @@ public class MainActivity extends AppCompatActivity {
         name.setText(sharedPreferences.getString(LoginActivity.FIRST_NAME, "User"));
     }
 
-    private void setDate() {
+    private String getDate() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM YYYY", Locale.getDefault());
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
-        date.setText(sdf.format(calendar.getTime()));
+        return sdf.format(calendar.getTime());
     }
 
     private void setRetrofit() {
