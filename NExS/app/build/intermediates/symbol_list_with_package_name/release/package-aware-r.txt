@@ -1097,6 +1097,7 @@ color foreground_material_dark
 color foreground_material_light
 color highlighted_text_material_dark
 color highlighted_text_material_light
+color ic_launcher_background
 color material_blue_grey_800
 color material_blue_grey_900
 color material_blue_grey_950
@@ -1756,7 +1757,6 @@ drawable ic_favorite_red_24dp
 drawable ic_favorite_white_24dp
 drawable ic_image_post_black
 drawable ic_keyboard_black_24dp
-drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable ic_menu_black_24dp
 drawable ic_mtrl_checked_circle
@@ -2464,6 +2464,7 @@ layout view_coin_earned
 menu drawer_menu
 menu main_menu
 mipmap ic_launcher
+mipmap ic_launcher_foreground
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description
 string abc_action_bar_home_description
