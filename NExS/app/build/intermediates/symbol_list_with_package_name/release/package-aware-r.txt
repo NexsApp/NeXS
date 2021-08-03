@@ -1609,6 +1609,7 @@ dimen tooltip_precise_anchor_threshold
 dimen tooltip_vertical_padding
 dimen tooltip_y_offset_non_touch
 dimen tooltip_y_offset_touch
+drawable a
 drawable abc_ab_share_pack_mtrl_alpha
 drawable abc_action_bar_item_background_material
 drawable abc_btn_borderless_material
@@ -1831,6 +1832,7 @@ id SHOW_PROGRESS
 id SYM
 id TOP_END
 id TOP_START
+id about_us
 id accelerate
 id accessibility_action_clickable_span
 id accessibility_custom_action_0
@@ -1984,6 +1986,7 @@ id edit_query
 id education_news_rv
 id education_news_title_tv
 id elastic
+id email
 id end
 id endToStart
 id end_padder
@@ -2030,6 +2033,7 @@ id ignoreRequest
 id image
 id imageView
 id imageView4
+id img
 id info
 id international_news_rv
 id international_news_title_tv
@@ -2207,6 +2211,7 @@ id snackbar_action
 id snackbar_text
 id snap
 id snapMargins
+id source
 id spacer
 id spline
 id split_action_bar
@@ -2358,6 +2363,7 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_about_us
 layout activity_feed
 layout activity_login
 layout activity_main
@@ -2495,6 +2501,7 @@ string abc_searchview_description_voice
 string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
+string about_us
 string app_name
 string appbar_scrolling_view_behavior
 string background

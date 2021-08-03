@@ -26,6 +26,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true" >
+        <activity android:name="in.co.nexs.nexsapp.AboutUsActivity" />
         <activity android:name="in.co.nexs.nexsapp.NameActivity" />
         <activity android:name="in.co.nexs.nexsapp.PhoneAuth" />
         <activity android:name="in.co.nexs.nexsapp.FeedActivity" >

@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.READ_SMS" />
 
     <application
-        android:name="in.co.nexs.nexsapp.App"
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -15,25 +15,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name="in.co.nexs.nexsapp.NameActivity" />
-        <activity android:name="in.co.nexs.nexsapp.PhoneAuth" />
-        <activity android:name="in.co.nexs.nexsapp.FeedActivity">
+        <activity android:name=".AboutUsActivity"></activity>
+        <activity android:name=".NameActivity" />
+        <activity android:name=".PhoneAuth" />
+        <activity android:name=".FeedActivity">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
+
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
-        <activity android:name="in.co.nexs.nexsapp.LoginActivity" />
-        <activity android:name="in.co.nexs.nexsapp.SplashScreen">
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="in.co.nexs.nexsapp.MainActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -50,11 +52,11 @@
 
             <meta-data
                 android:name="android.app.default_searchable"
-                android:value=".FeedActivity"/>
+                android:value=".FeedActivity" />
         </activity>
 
         <service
-            android:name="in.co.nexs.nexsapp.services.FcmCustomService"
+            android:name=".services.FcmCustomService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />

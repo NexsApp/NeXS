@@ -17,4 +17,8 @@
         android:id="@+id/nav_login"
         android:icon="@drawable/ic_baseline_exit_to_app_24"
         android:title="@string/logout" />
+    <item
+        android:id="@+id/about_us"
+        android:icon="@drawable/ic_baseline_exit_to_app_24"
+        android:title="@string/about_us" />
 </menu>

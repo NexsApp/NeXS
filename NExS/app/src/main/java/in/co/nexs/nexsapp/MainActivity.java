@@ -377,9 +377,12 @@ public class MainActivity extends AppCompatActivity {
                     share.putExtra(Intent.EXTRA_TEXT, "Download NExS for latest news and updates\n\nhttps://nexs.page.link/invite");
                     context.startActivity(share);
                     break;
-                default:
+                case R.id.nav_login:
                     loginOrLogout();
                     drawerLayout.closeDrawer(GravityCompat.START);
+                    break;
+                default:
+                    startActivity(new Intent(context, AboutUsActivity.class));
             }
             ;
             return false;
