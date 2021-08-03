@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:paddingStart="0dp"
     android:paddingEnd="7dp"
-    tools:context=".SplashScreen">
+    tools:context="in.co.nexs.nexsapp.SplashScreen">
 
     <ImageView
         android:id="@+id/logoSplash"

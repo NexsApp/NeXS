@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.nexs">
+    package="in.co.nexs.nexsapp">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_SMS" />
 
     <application
-        android:name=".App"
+        android:name="in.co.nexs.nexsapp.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -15,9 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".NameActivity" />
-        <activity android:name=".PhoneAuth" />
-        <activity android:name=".FeedActivity">
+        <activity android:name="in.co.nexs.nexsapp.NameActivity" />
+        <activity android:name="in.co.nexs.nexsapp.PhoneAuth" />
+        <activity android:name="in.co.nexs.nexsapp.FeedActivity">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
@@ -25,15 +25,15 @@
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".SplashScreen">
+        <activity android:name="in.co.nexs.nexsapp.LoginActivity" />
+        <activity android:name="in.co.nexs.nexsapp.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name="in.co.nexs.nexsapp.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -54,7 +54,7 @@
         </activity>
 
         <service
-            android:name=".services.FcmCustomService"
+            android:name="in.co.nexs.nexsapp.services.FcmCustomService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />

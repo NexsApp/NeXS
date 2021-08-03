@@ -1,32 +1,25 @@
 {
   "project_info": {
     "project_number": "733221172616",
+    "firebase_url": "https://nexs-23feb21-default-rtdb.firebaseio.com",
     "project_id": "nexs-23feb21",
     "storage_bucket": "nexs-23feb21.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:733221172616:android:640ba38bda5152b1e5b63d",
+        "mobilesdk_app_id": "1:733221172616:android:341396fc07fe53f0e5b63d",
         "android_client_info": {
-          "package_name": "com.example.nexs"
+          "package_name": "in.co.nexs.nexsapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "733221172616-ergl2rjutu2p2ds8gucf15e2envetchn.apps.googleusercontent.com",
+          "client_id": "733221172616-hfufia9jht12vbs0a4st2ippvlkl9mo3.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.nexs",
-            "certificate_hash": "ef6522d8656da9537f6a8c1e75895c56df7eb9c1"
-          }
-        },
-        {
-          "client_id": "733221172616-m4p4dcijr34volbsgvtk22nu1uqruffr.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.nexs",
-            "certificate_hash": "3ec17b8b84e8d712719845bec1b42a9ace295f8c"
+            "package_name": "in.co.nexs.nexsapp",
+            "certificate_hash": "cc60f6c2d4b7c2bfc77029ad857a28154c0562a3"
           }
         },
         {

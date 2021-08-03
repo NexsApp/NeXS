@@ -4,7 +4,7 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.example.nexs",
+  "applicationId": "in.co.nexs.nexsapp",
   "variantName": "processReleaseResources",
   "elements": [
     {

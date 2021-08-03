@@ -1,4 +1,4 @@
-#Sun Aug 01 09:14:18 IST 2021
+#Tue Aug 03 17:07:22 IST 2021
 base.1=/home/hitesh/codes/projects/nexs/android/NExS/app/build/intermediates/dex/release/mergeDexRelease/classes2.dex
 path.1=classes2.dex
 base.0=/home/hitesh/codes/projects/nexs/android/NExS/app/build/intermediates/dex/release/mergeDexRelease/classes.dex

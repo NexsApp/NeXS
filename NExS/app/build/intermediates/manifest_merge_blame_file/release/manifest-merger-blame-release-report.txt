@@ -1,6 +1,6 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-3    package="com.example.nexs"
+3    package="in.co.nexs.nexsapp"
 4    android:versionCode="1"
 5    android:versionName="1.0" >
 6
@@ -31,8 +31,8 @@
 17
 18    <application
 18-->/home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:9:5-63:19
-19        android:name="com.example.nexs.App"
-19-->/home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:10:9-28
+19        android:name="in.co.nexs.nexsapp.App"
+19-->/home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:10:9-46
 20        android:allowBackup="true"
 20-->/home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:11:9-35
 21        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -50,15 +50,15 @@
 27-->/home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:16:9-65
 28        android:usesCleartextTraffic="true" >
 28-->/home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:17:9-44
-29        <activity android:name="com.example.nexs.NameActivity" />
-29-->/home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:18:9-50
-29-->/home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:18:19-47
-30        <activity android:name="com.example.nexs.PhoneAuth" />
-30-->/home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:19:9-47
-30-->/home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:19:19-44
-31        <activity android:name="com.example.nexs.FeedActivity" >
+29        <activity android:name="in.co.nexs.nexsapp.NameActivity" />
+29-->/home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:18:9-68
+29-->/home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:18:19-65
+30        <activity android:name="in.co.nexs.nexsapp.PhoneAuth" />
+30-->/home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:19:9-65
+30-->/home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:19:19-62
+31        <activity android:name="in.co.nexs.nexsapp.FeedActivity" >
 31-->/home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:20:9-27:20
-31-->/home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:20:19-47
+31-->/home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:20:19-65
 32            <intent-filter>
 32-->/home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:21:13-23:29
 33                <action android:name="android.intent.action.SEARCH" />
@@ -73,12 +73,12 @@
 38                android:resource="@xml/searchable" />
 38-->/home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:26:17-51
 39        </activity>
-40        <activity android:name="com.example.nexs.LoginActivity" />
-40-->/home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:28:9-51
-40-->/home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:28:19-48
-41        <activity android:name="com.example.nexs.SplashScreen" >
+40        <activity android:name="in.co.nexs.nexsapp.LoginActivity" />
+40-->/home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:28:9-69
+40-->/home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:28:19-66
+41        <activity android:name="in.co.nexs.nexsapp.SplashScreen" >
 41-->/home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:29:9-35:20
-41-->/home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:29:19-47
+41-->/home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:29:19-65
 42            <intent-filter>
 42-->/home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:30:13-34:29
 43                <action android:name="android.intent.action.MAIN" />
@@ -90,9 +90,9 @@
 45-->/home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:33:27-74
 46            </intent-filter>
 47        </activity>
-48        <activity android:name="com.example.nexs.MainActivity" >
+48        <activity android:name="in.co.nexs.nexsapp.MainActivity" >
 48-->/home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:36:9-54:20
-48-->/home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:36:19-47
+48-->/home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:36:19-65
 49            <intent-filter>
 49-->/home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:37:13-49:29
 50                <action android:name="android.intent.action.VIEW" />
@@ -130,8 +130,8 @@
 67
 68        <service
 68-->/home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:56:9-62:19
-69            android:name="com.example.nexs.services.FcmCustomService"
-69-->/home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:57:13-54
+69            android:name="in.co.nexs.nexsapp.services.FcmCustomService"
+69-->/home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:57:13-72
 70            android:exported="false" >
 70-->/home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:58:13-37
 71            <intent-filter>
@@ -383,7 +383,7 @@
 207-->[com.google.firebase:firebase-common:19.5.0] /home/hitesh/.gradle/caches/transforms-2/files-2.1/7e6fcb85f3c10e2291fee7044d302a05/jetified-firebase-common-19.5.0/AndroidManifest.xml:26:9-31:39
 208            android:name="com.google.firebase.provider.FirebaseInitProvider"
 208-->[com.google.firebase:firebase-common:19.5.0] /home/hitesh/.gradle/caches/transforms-2/files-2.1/7e6fcb85f3c10e2291fee7044d302a05/jetified-firebase-common-19.5.0/AndroidManifest.xml:27:13-77
-209            android:authorities="com.example.nexs.firebaseinitprovider"
+209            android:authorities="in.co.nexs.nexsapp.firebaseinitprovider"
 209-->[com.google.firebase:firebase-common:19.5.0] /home/hitesh/.gradle/caches/transforms-2/files-2.1/7e6fcb85f3c10e2291fee7044d302a05/jetified-firebase-common-19.5.0/AndroidManifest.xml:28:13-72
 210            android:directBootAware="true"
 210-->[com.google.firebase:firebase-common:19.5.0] /home/hitesh/.gradle/caches/transforms-2/files-2.1/7e6fcb85f3c10e2291fee7044d302a05/jetified-firebase-common-19.5.0/AndroidManifest.xml:29:13-43
