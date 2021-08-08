@@ -417,7 +417,7 @@ public class ViewPagerAdapter extends RecyclerView.Adapter<ViewPagerAdapter.Page
         DynamicLink dynamicLink = FirebaseDynamicLinks.getInstance().createDynamicLink()
                 .setLink(Uri.parse("https://nexs-news.com/article/?id=" + id))
                 .setDomainUriPrefix("https://nexs.page.link")
-                .setAndroidParameters(new DynamicLink.AndroidParameters.Builder("com.example.nexs").build())
+                .setAndroidParameters(new DynamicLink.AndroidParameters.Builder("in.co.nexs.nexsapp").build())
                 .buildDynamicLink();
         Uri dynamicLinkUri = dynamicLink.getUri();
         Intent share = new Intent(Intent.ACTION_SEND);

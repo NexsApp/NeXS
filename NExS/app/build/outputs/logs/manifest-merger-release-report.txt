@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:2:1-67:12
-INJECTED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:2:1-67:12
-INJECTED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:2:1-67:12
-INJECTED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:2:1-67:12
+ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:2:1-66:12
+INJECTED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:2:1-66:12
+INJECTED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:2:1-66:12
+INJECTED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:2:1-66:12
 MERGED from [androidx.navigation:navigation-ui:2.3.5] /home/hitesh/.gradle/caches/transforms-2/files-2.1/f438856115a63d46b50003ad74461636/navigation-ui-2.3.5/AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.material:material:1.3.0] /home/hitesh/.gradle/caches/transforms-2/files-2.1/5a23ece772cbda7f84815906105bb879/material-1.3.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /home/hitesh/.gradle/caches/transforms-2/files-2.1/d4fe9a921f33683a094addca5b7f8c20/constraintlayout-2.0.4/AndroidManifest.xml:2:1-11:12
@@ -90,20 +90,20 @@ MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /home/hitesh/.gradle/c
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.2.0] /home/hitesh/.gradle/caches/transforms-2/files-2.1/14b87bcbc75f317ee168237f0a90ffa8/lifecycle-livedata-core-2.2.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.arch.core:core-runtime:2.1.0] /home/hitesh/.gradle/caches/transforms-2/files-2.1/3ef02a1d116e9f77b7d6f1b1a16afb05/core-runtime-2.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] /home/hitesh/.gradle/caches/transforms-2/files-2.1/57dfe0f72643e2661984f7b589f8210c/jetified-annotation-experimental-1.1.0/AndroidManifest.xml:17:1-24:12
-INJECTED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:2:1-67:12
-INJECTED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:2:1-67:12
-INJECTED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:2:1-67:12
+INJECTED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:2:1-66:12
+INJECTED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:2:1-66:12
+INJECTED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:2:1-66:12
 	package
 		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:3:5-33
 		INJECTED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml
 		INJECTED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml
-		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:2:1-67:12
+		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:2:1-66:12
 		INJECTED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml
 	android:versionCode
 		INJECTED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml
-		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:2:1-67:12
+		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:2:1-66:12
 		INJECTED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:2:11-69
@@ -157,12 +157,8 @@ MERGED from [com.google.android.gms:play-services-measurement-sdk-api:18.0.2] /h
 MERGED from [com.google.android.gms:play-services-measurement-sdk-api:18.0.2] /home/hitesh/.gradle/caches/transforms-2/files-2.1/354eaf200fcb3e68b9376275a1aed2cb/jetified-play-services-measurement-sdk-api-18.0.2/AndroidManifest.xml:23:5-67
 	android:name
 		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:6:22-64
-uses-permission#android.permission.READ_SMS
-ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:7:5-67
-	android:name
-		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:7:22-64
 application
-ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:9:5-65:19
+ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:8:5-64:19
 MERGED from [com.google.android.material:material:1.3.0] /home/hitesh/.gradle/caches/transforms-2/files-2.1/5a23ece772cbda7f84815906105bb879/material-1.3.0/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.3.0] /home/hitesh/.gradle/caches/transforms-2/files-2.1/5a23ece772cbda7f84815906105bb879/material-1.3.0/AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /home/hitesh/.gradle/caches/transforms-2/files-2.1/d4fe9a921f33683a094addca5b7f8c20/constraintlayout-2.0.4/AndroidManifest.xml:9:5-20
@@ -234,109 +230,109 @@ MERGED from [com.google.android.datatransport:transport-runtime:2.2.5] /home/hit
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.3.1] /home/hitesh/.gradle/caches/transforms-2/files-2.1/d3e01d1fa4f89565bc33185f108e9547/core-1.3.1/AndroidManifest.xml:24:18-86
 	android:supportsRtl
-		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:15:9-35
+		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:14:9-35
 	android:label
-		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:13:9-41
+		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:12:9-41
 	android:roundIcon
-		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:14:9-54
+		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:13:9-54
 	android:icon
-		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:12:9-43
+		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:11:9-43
 	android:allowBackup
-		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:11:9-35
+		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:10:9-35
 	android:theme
-		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:16:9-65
+		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:15:9-65
 	android:usesCleartextTraffic
-		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:17:9-44
+		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:16:9-44
 	android:name
-		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:10:9-28
+		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:9:9-28
 activity#in.co.nexs.nexsapp.AboutUsActivity
-ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:18:9-62
+ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:17:9-53
 	android:name
-		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:18:19-50
+		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:17:19-50
 activity#in.co.nexs.nexsapp.NameActivity
-ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:19:9-50
+ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:18:9-50
 	android:name
-		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:19:19-47
+		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:18:19-47
 activity#in.co.nexs.nexsapp.PhoneAuth
-ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:20:9-47
+ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:19:9-47
 	android:name
-		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:20:19-44
+		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:19:19-44
 activity#in.co.nexs.nexsapp.FeedActivity
-ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:21:9-29:20
+ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:20:9-28:20
 	android:name
-		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:21:19-47
+		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:20:19-47
 intent-filter#action:name:android.intent.action.SEARCH
-ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:22:13-24:29
+ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:21:13-23:29
 action#android.intent.action.SEARCH
-ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:23:17-71
+ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:22:17-71
 	android:name
-		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:23:25-68
+		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:22:25-68
 meta-data#android.app.searchable
-ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:26:13-28:54
+ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:25:13-27:54
 	android:resource
-		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:28:17-51
+		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:27:17-51
 	android:name
-		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:27:17-54
+		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:26:17-54
 activity#in.co.nexs.nexsapp.LoginActivity
-ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:30:9-51
+ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:29:9-51
 	android:name
-		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:30:19-48
+		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:29:19-48
 activity#in.co.nexs.nexsapp.SplashScreen
-ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:31:9-37:20
+ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:30:9-36:20
 	android:name
-		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:31:19-47
+		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:30:19-47
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:32:13-36:29
+ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:31:13-35:29
 action#android.intent.action.MAIN
-ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:33:17-69
+ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:32:17-69
 	android:name
-		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:33:25-66
+		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:32:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:35:17-77
+ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:34:17-77
 	android:name
-		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:35:27-74
+		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:34:27-74
 activity#in.co.nexs.nexsapp.MainActivity
-ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:38:9-56:20
+ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:37:9-55:20
 	android:name
-		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:38:19-47
+		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:37:19-47
 intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:nexs-news.com+data:host:nexs-news.com+data:scheme:http+data:scheme:https
-ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:39:13-51:29
+ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:38:13-50:29
 action#android.intent.action.VIEW
-ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:40:17-69
+ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:39:17-69
 	android:name
-		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:40:25-66
+		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:39:25-66
 category#android.intent.category.DEFAULT
-ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:42:17-76
+ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:41:17-76
 	android:name
-		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:42:27-73
+		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:41:27-73
 category#android.intent.category.BROWSABLE
-ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:43:17-78
+ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:42:17-78
 	android:name
-		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:43:27-75
+		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:42:27-75
 data
-ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:45:17-47:46
+ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:44:17-46:46
 	android:host
-		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:46:21-49
+		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:45:21-49
 	android:scheme
-		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:47:21-43
+		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:46:21-43
 meta-data#android.app.default_searchable
-ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:53:13-55:49
+ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:52:13-54:49
 	android:value
-		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:55:17-46
+		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:54:17-46
 	android:name
-		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:54:17-62
+		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:53:17-62
 service#in.co.nexs.nexsapp.services.FcmCustomService
-ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:58:9-64:19
+ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:57:9-63:19
 	android:exported
-		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:60:13-37
+		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:59:13-37
 	android:name
-		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:59:13-54
+		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:58:13-54
 intent-filter#action:name:com.google.firebase.MESSAGING_EVENT
-ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:61:13-63:29
+ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:60:13-62:29
 action#com.google.firebase.MESSAGING_EVENT
-ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:62:17-78
+ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:61:17-78
 	android:name
-		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:62:25-75
+		ADDED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml:61:25-75
 uses-sdk
 INJECTED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/hitesh/codes/projects/nexs/android/NExS/app/src/main/AndroidManifest.xml

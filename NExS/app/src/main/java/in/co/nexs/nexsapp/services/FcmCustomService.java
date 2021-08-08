@@ -26,7 +26,7 @@ public class FcmCustomService extends FirebaseMessagingService {
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.googleg_disabled_color_18);
         Notification notification = new NotificationCompat
                 .Builder(this, App.NEWS)
-                .setSmallIcon(R.drawable.ic_baseline_login_24)  //Proper drawable required
+                .setSmallIcon(R.drawable.nexs)                  //Proper drawable required
                 .setLargeIcon(bitmap)                           //Proper icon required
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setContentText(remoteMessage.getData().get("data"))
